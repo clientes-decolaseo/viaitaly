@@ -7,7 +7,6 @@ import PartnersCarousel from '../components/PartnersCarousel.astro';
 import ProcessFlipCards from '../components/ProcessFlipCards.astro';
 import ProductGrid from '../components/ProductGrid.astro';
 import Testimonials from '../components/Testimonials.astro';
-import { TERNOS_SOB_MEDIDA_HUB } from '../data/content-hubs';
 import site from '../data/site.json';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
@@ -32,19 +31,6 @@ const schema = {
 	},
 	openingHours: 'Mo-Fr 09:00-19:00',
 };
-
-const exploreCards = [
-	{
-		href: TERNOS_SOB_MEDIDA_HUB.path,
-		label: TERNOS_SOB_MEDIDA_HUB.name,
-		kicker: 'Pilar',
-	},
-	...TERNOS_SOB_MEDIDA_HUB.spokes.slice(0, 3).map((spoke) => ({
-		href: spoke.href,
-		label: spoke.label,
-		kicker: 'Artigo',
-	})),
-];
 ---
 
 <BaseLayout {title} {description} {canonical} {schema}>
@@ -56,105 +42,4 @@ const exploreCards = [
 	<Testimonials />
 	<PartnersCarousel />
 	<ContactSection />
-	<article class="home">
-		<section class="explore" aria-labelledby="explore-heading">
-			<h2 id="explore-heading">Explore</h2>
-			<ul class="cards">
-				{
-					exploreCards.map((card) => (
-						<li>
-							<a href={card.href}>
-								<span class="kicker">{card.kicker}</span>
-								<span class="card-title">{card.label}</span>
-							</a>
-						</li>
-					))
-				}
-			</ul>
-		</section>
-	</article>
 </BaseLayout>
-
-<style>
-	.home {
-		max-width: 72rem;
-		margin-inline: auto;
-		padding: var(--space-8) var(--space-4) var(--space-12);
-	}
-
-	h2 {
-		margin: 0 0 var(--space-4);
-		font-family: var(--font-display);
-		font-size: 1.6rem;
-		color: var(--color-navy);
-	}
-
-	h3 {
-		margin: 0 0 var(--space-2);
-		font-size: 1.05rem;
-		color: var(--color-navy);
-	}
-
-	p {
-		margin: 0 0 var(--space-4);
-		color: var(--color-ink-soft);
-	}
-
-	section {
-		margin-bottom: var(--space-12);
-	}
-
-	.cards {
-		display: grid;
-		gap: var(--space-6);
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-
-	@media (min-width: 48rem) {
-		.cards {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
-
-	@media (min-width: 64rem) {
-		.cards {
-			grid-template-columns: repeat(4, 1fr);
-		}
-	}
-
-	.cards a {
-		padding: var(--space-6);
-		border: 1px solid var(--color-border);
-		border-radius: var(--radius);
-		background-color: var(--color-bg);
-	}
-
-	.cards a {
-		display: flex;
-		flex-direction: column;
-		gap: var(--space-2);
-		height: 100%;
-		text-decoration: none;
-	}
-
-	.cards a:hover {
-		border-color: var(--color-gold);
-	}
-
-	.kicker {
-		font-size: 0.75rem;
-		font-weight: 700;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
-		color: var(--color-gold-dark);
-	}
-
-	.card-title {
-		font-family: var(--font-display);
-		font-size: 1.15rem;
-		line-height: 1.3;
-		color: var(--color-navy);
-	}
-</style>

@@ -32,10 +32,36 @@ const href = `https://wa.me/5511996627391?text=${encodeURIComponent('Olá, vim p
 		color: #fff;
 		box-shadow: 0 8px 20px rgb(0 0 0 / 0.22);
 		text-decoration: none;
+		transition:
+			opacity 0.3s ease,
+			background-color 0.3s ease;
 	}
 
 	.floating-whatsapp:hover,
 	.floating-whatsapp:focus-visible {
 		background-color: #1ebe57;
 	}
+
+	.floating-whatsapp.is-hidden {
+		opacity: 0;
+		pointer-events: none;
+	}
 </style>
+
+<script>
+	function bindFabToFooter() {
+		const fab = document.querySelector('.floating-whatsapp');
+		const footer = document.querySelector('footer');
+		if (!(fab instanceof HTMLElement) || !footer || fab.dataset.footerBound === 'true') return;
+
+		fab.dataset.footerBound = 'true';
+		const observer = new IntersectionObserver((entries) => {
+			fab.classList.toggle('is-hidden', Boolean(entries[0]?.isIntersecting));
+		});
+
+		observer.observe(footer);
+	}
+
+	bindFabToFooter();
+	document.addEventListener('astro:page-load', bindFabToFooter);
+</script>

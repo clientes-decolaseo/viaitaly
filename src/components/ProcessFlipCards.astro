@@ -78,6 +78,7 @@ const etapas = [
 		position: relative;
 		width: 100%;
 		height: 100%;
+		transform: rotateY(0deg);
 		transform-style: preserve-3d;
 		transition: transform 0.6s ease;
 	}
@@ -99,11 +100,14 @@ const etapas = [
 	}
 
 	.front {
+		z-index: 2;
 		background-color: #f3f2ee;
 		color: var(--color-primary);
+		transform: rotateY(0deg);
 	}
 
 	.back {
+		z-index: 1;
 		background-color: #737373;
 		color: var(--color-white);
 		transform: rotateY(180deg);
@@ -140,12 +144,7 @@ const etapas = [
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.card {
-			height: auto;
-		}
-
 		.flip {
-			transform: none;
 			transition: none;
 		}
 
@@ -154,18 +153,19 @@ const etapas = [
 			transform: none;
 		}
 
-		.face {
-			position: relative;
-			backface-visibility: visible;
+		.back {
+			visibility: hidden;
 			transform: none;
 		}
 
-		.front {
-			min-height: 5rem;
+		.card:hover .front,
+		.card:focus-within .front {
+			visibility: hidden;
 		}
 
-		.back {
-			padding-top: 0;
+		.card:hover .back,
+		.card:focus-within .back {
+			visibility: visible;
 		}
 	}
 </style>
