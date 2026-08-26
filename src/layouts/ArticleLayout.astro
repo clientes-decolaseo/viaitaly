@@ -1,0 +1,171 @@
+---
+import cluster from '../data/blog-cluster';
+import BaseLayout from './BaseLayout.astro';
+
+interface BreadcrumbItem {
+	href?: string;
+	label: string;
+}
+
+interface PillarLink {
+	href: string;
+	title: string;
+	description?: string;
+}
+
+interface Props {
+	title: string;
+	description: string;
+	canonical: string;
+	schema?: Record<string, unknown> | Record<string, unknown>[];
+	breadcrumbs?: BreadcrumbItem[];
+	pillar?: PillarLink;
+}
+
+const {
+	title,
+	description,
+	canonical,
+	schema,
+	breadcrumbs = [
+		{ href: '/', label: 'Início' },
+		{ href: '/blog/', label: 'Blog' },
+		{ label: title },
+	],
+	pillar = {
+		href: cluster.pillar.href,
+		title: cluster.pillar.title,
+		description: cluster.pillar.description,
+	},
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} schema={schema}>
+	<article class="article">
+		<nav class="breadcrumb" aria-label="Trilha de navegação">
+			<ol>
+				{
+					breadcrumbs.map((item, index) => {
+						const isLast = index === breadcrumbs.length - 1;
+						return (
+							<li>
+								{item.href && !isLast ? <a href={item.href}>{item.label}</a> : <span aria-current="page">{item.label}</span>}
+							</li>
+						);
+					})
+				}
+			</ol>
+		</nav>
+
+		<div class="article-body">
+			<slot />
+		</div>
+
+		<aside class="related-pillar" aria-labelledby="pilar-relacionado-heading">
+			<p class="related-kicker">Artigo relacionado ao pilar</p>
+			<h2 id="pilar-relacionado-heading">
+				<a href={pillar.href}>{pillar.title}</a>
+			</h2>
+			{pillar.description && <p>{pillar.description}</p>}
+		</aside>
+	</article>
+</BaseLayout>
+
+<style>
+	.article {
+		max-width: 46rem;
+		margin-inline: auto;
+		padding: var(--space-8) var(--space-4) var(--space-12);
+	}
+
+	.breadcrumb ol {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-2);
+		margin: 0 0 var(--space-8);
+		padding: 0;
+		list-style: none;
+		font-size: 0.875rem;
+		color: var(--color-ink-soft);
+	}
+
+	.breadcrumb li:not(:last-child)::after {
+		content: '/';
+		margin-left: var(--space-2);
+		color: var(--color-border);
+	}
+
+	.breadcrumb a {
+		color: var(--color-navy);
+		text-decoration: none;
+	}
+
+	.breadcrumb a:hover {
+		text-decoration: underline;
+		color: var(--color-gold-dark);
+	}
+
+	.article-body :global(h1) {
+		margin: 0 0 var(--space-6);
+		font-family: var(--font-display);
+		font-size: clamp(1.75rem, 3vw, 2.35rem);
+		line-height: 1.25;
+		color: var(--color-navy);
+	}
+
+	.article-body :global(h2) {
+		margin: var(--space-8) 0 var(--space-3);
+		font-family: var(--font-display);
+		font-size: 1.35rem;
+		color: var(--color-navy);
+	}
+
+	.article-body :global(p),
+	.article-body :global(ul),
+	.article-body :global(ol) {
+		margin: 0 0 var(--space-4);
+		color: var(--color-ink-soft);
+	}
+
+	.article-body :global(a) {
+		color: var(--color-navy);
+		font-weight: 600;
+	}
+
+	.related-pillar {
+		margin-top: var(--space-12);
+		padding: var(--space-6);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		background-color: var(--color-cream);
+	}
+
+	.related-kicker {
+		margin: 0 0 var(--space-2);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--color-gold-dark);
+	}
+
+	.related-pillar h2 {
+		margin: 0 0 var(--space-2);
+		font-family: var(--font-display);
+		font-size: 1.25rem;
+	}
+
+	.related-pillar a {
+		color: var(--color-navy);
+		text-decoration: none;
+	}
+
+	.related-pillar a:hover {
+		text-decoration: underline;
+	}
+
+	.related-pillar p:last-child {
+		margin: 0;
+		color: var(--color-ink-soft);
+	}
+</style>

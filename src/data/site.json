@@ -1,0 +1,19 @@
+{
+  "name": "Sartoria Via Italy",
+  "shortName": "Via Italy",
+  "url": "https://viaitaly.com.br",
+  "phoneDisplay": "(11) 99662-7391",
+  "phoneTel": "+5511996627391",
+  "whatsapp": "5511996627391",
+  "whatsappDefaultMessage": "Olá, gostaria de agendar um atendimento na Sartoria Via Italy.",
+  "email": "contato@viaitaly.com.br",
+  "instagram": "https://www.instagram.com/sartoriaviaitaly/",
+  "hours": "Segunda a sexta, 9h às 19h",
+  "address": {
+    "street": "Rua Silva Bueno, 599 — Sala 511",
+    "neighborhood": "Ipiranga",
+    "city": "São Paulo",
+    "region": "SP",
+    "postalCode": "04208-050"
+  }
+}

@@ -1,0 +1,111 @@
+---
+import cluster from '../data/blog-cluster';
+import site from '../data/site.json';
+
+const year = new Date().getFullYear();
+const addressLine = `${site.address.street}, ${site.address.neighborhood} — ${site.address.city}/${site.address.region}, ${site.address.postalCode}`;
+
+const institutionalLinks = [
+	{ href: '/', label: 'Início' },
+	{ href: cluster.pillar.href, label: cluster.pillar.label },
+	{ href: '/sobre/', label: 'Sobre' },
+	{ href: '/blog/', label: 'Blog' },
+	{ href: '/contato/', label: 'Contato' },
+];
+---
+
+<footer>
+	<div class="inner">
+		<section class="nap" aria-labelledby="footer-nap-heading">
+			<h2 id="footer-nap-heading">{site.name}</h2>
+			<address>
+				<p>{addressLine}</p>
+				<p>
+					<a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
+				</p>
+				<p>{site.hours}</p>
+			</address>
+		</section>
+
+		<nav aria-label="Links institucionais">
+			<ul>
+				{
+					institutionalLinks.map((item) => (
+						<li>
+							<a href={item.href}>{item.label}</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
+	</div>
+	<p class="copy">© {year} {site.name}. Alfaiataria bespoke em São Paulo.</p>
+</footer>
+
+<style>
+	footer {
+		margin-top: auto;
+		border-top: 1px solid var(--color-border);
+		background-color: var(--color-navy);
+		color: #f5f0e6;
+	}
+
+	.inner {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: var(--space-8);
+		max-width: var(--max-width);
+		margin-inline: auto;
+		padding: var(--space-12) var(--space-4) var(--space-8);
+	}
+
+	h2 {
+		margin: 0 0 var(--space-3);
+		font-family: var(--font-display);
+		font-size: 1.35rem;
+		font-weight: 700;
+		color: #fff;
+	}
+
+	address {
+		font-style: normal;
+	}
+
+	address p {
+		margin: 0 0 var(--space-2);
+		color: #d6d0c4;
+	}
+
+	a {
+		color: #f5f0e6;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: var(--color-gold);
+		text-decoration: underline;
+	}
+
+	nav ul {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	nav a {
+		font-weight: 600;
+	}
+
+	.copy {
+		margin: 0;
+		padding: var(--space-4);
+		border-top: 1px solid rgb(255 255 255 / 0.12);
+		color: #b8b1a4;
+		font-size: 0.875rem;
+		text-align: center;
+	}
+</style>

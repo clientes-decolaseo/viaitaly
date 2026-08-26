@@ -1,0 +1,148 @@
+---
+import CTAWhatsapp from '../components/CTAWhatsapp.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'Sergio Saturnino — Fundador da Sartoria Via Italy | 27 Anos de Ofício';
+const description =
+	'Conheça Sergio Saturnino, fundador da Via Italy. 27 anos de alfaiataria bespoke full canvas, parcerias com Loro Piana, Zegna e Dormeuil.';
+const canonical = '/sobre/';
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Sergio Saturnino',
+	jobTitle: 'Mestre Alfaiate e Fundador',
+	worksFor: {
+		'@type': 'LocalBusiness',
+		name: 'Sartoria Via Italy',
+		foundingDate: '2012',
+	},
+	description:
+		'Mestre alfaiate com 27 anos de experiência em confecção bespoke full canvas, fundador da Sartoria Via Italy em 2012.',
+	knowsAbout: ['Alfaiataria bespoke', 'Full canvas', 'Tecidos italianos', 'Terno sob medida'],
+};
+---
+
+<BaseLayout {title} {description} {canonical} {schema}>
+	<article class="page">
+		<h1>Sergio Saturnino: 27 Anos Dedicados à Alfaiataria Bespoke</h1>
+
+		<p>
+			Sergio Saturnino é o fundador da Sartoria Via Italy e responde diretamente por cada peça
+			que sai do ateliê. Não há intermediários entre o cliente e o mestre alfaiate: cada terno
+			passa pelas mãos de quem fundou a casa.
+		</p>
+
+		<section aria-labelledby="trajetoria">
+			<h2 id="trajetoria">Uma Trajetória de 27 Anos no Ofício</h2>
+			<p>
+				Sergio dedica 27 anos à alfaiataria bespoke full canvas — a técnica mais tradicional e
+				trabalhosa de confecção de ternos, na qual a entretela é costurada à mão e acompanha o
+				corpo do cliente com um caimento que nenhuma peça industrial reproduz.
+			</p>
+			<p>
+				Essa experiência resultou na fundação da Sartoria Via Italy, em 2012. Desde então, a
+				casa mantém um princípio simples: cada peça nasce do zero, construída sob as medidas
+				exatas de quem vai vesti-la. Não existem tamanhos padrão nem ajustes de última hora —
+				existe uma peça pensada para uma pessoa específica.
+			</p>
+		</section>
+
+		<section aria-labelledby="parcerias">
+			<h2 id="parcerias">Parcerias com as Principais Casas Têxteis Europeias</h2>
+			<p>
+				A qualidade de um terno bespoke começa no tecido. Por isso, a Via Italy trabalha com
+				parcerias diretas junto a algumas das casas têxteis mais respeitadas da Europa:
+			</p>
+			<ul>
+				<li>Loro Piana</li>
+				<li>Cerruti</li>
+				<li>Ermenegildo Zegna</li>
+				<li>Reda</li>
+				<li>Drago</li>
+				<li>Piacenza</li>
+				<li>Dormeuil</li>
+			</ul>
+			<p>
+				Essas parcerias garantem acesso a tecidos que raramente chegam ao mercado brasileiro
+				fora do circuito bespoke, com origem rastreável e qualidade reconhecida
+				internacionalmente.
+			</p>
+		</section>
+
+		<section aria-labelledby="como-trabalhamos">
+			<h2 id="como-trabalhamos">Como Trabalhamos</h2>
+			<p>
+				Todas as peças da Via Italy são confeccionadas do absoluto zero, com base nas medidas
+				individuais de cada cliente. Não há reaproveitamento de moldes genéricos — cada corte
+				é único.
+			</p>
+			<p>
+				O atendimento é sempre feito com hora marcada. Essa escolha existe para garantir a
+				atenção devida a cada cliente, sem pressa e sem sobreposição de agendas. O atendimento
+				pode ser realizado no ateliê da Sartoria Via Italy ou no endereço de escolha do
+				cliente.
+			</p>
+		</section>
+
+		<section class="cta" aria-labelledby="fale-com-sergio">
+			<h2 id="fale-com-sergio">Fale com Sergio Saturnino</h2>
+			<p>
+				Se você busca um terno que não existe em nenhuma prateleira — porque foi feito
+				exclusivamente para você — agende um horário com Sergio Saturnino e conheça o processo
+				bespoke da Via Italy.
+			</p>
+			<CTAWhatsapp texto="Agendar Atendimento via WhatsApp" />
+		</section>
+	</article>
+</BaseLayout>
+
+<style>
+	.page {
+		max-width: 46rem;
+		margin-inline: auto;
+		padding: var(--space-12) var(--space-4);
+	}
+
+	h1 {
+		margin: 0 0 var(--space-8);
+		font-family: var(--font-display);
+		font-size: clamp(1.9rem, 4vw, 2.75rem);
+		line-height: 1.2;
+		color: var(--color-navy);
+	}
+
+	h2 {
+		margin: var(--space-12) 0 var(--space-4);
+		font-family: var(--font-display);
+		font-size: 1.5rem;
+		color: var(--color-navy);
+	}
+
+	p {
+		margin: 0 0 var(--space-4);
+		color: var(--color-ink-soft);
+	}
+
+	ul {
+		margin: 0 0 var(--space-4);
+		padding-left: 1.25rem;
+		color: var(--color-ink-soft);
+	}
+
+	li {
+		margin-bottom: var(--space-1);
+	}
+
+	.cta {
+		margin-top: var(--space-12);
+		padding: var(--space-8);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius);
+		background-color: var(--color-cream);
+	}
+
+	.cta h2 {
+		margin-top: 0;
+	}
+</style>
