@@ -1,5 +1,12 @@
 ---
-import CTAWhatsapp from '../components/CTAWhatsapp.astro';
+import AboutTeaser from '../components/AboutTeaser.astro';
+import BenefitsCards from '../components/BenefitsCards.astro';
+import ContactSection from '../components/ContactSection.astro';
+import Hero from '../components/Hero.astro';
+import PartnersCarousel from '../components/PartnersCarousel.astro';
+import ProcessFlipCards from '../components/ProcessFlipCards.astro';
+import ProductGrid from '../components/ProductGrid.astro';
+import Testimonials from '../components/Testimonials.astro';
 import { TERNOS_SOB_MEDIDA_HUB } from '../data/content-hubs';
 import site from '../data/site.json';
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -26,63 +33,6 @@ const schema = {
 	openingHours: 'Mo-Fr 09:00-19:00',
 };
 
-const pecas = [
-	{
-		title: 'Ternos',
-		text: 'O clássico da elegância masculina, feito especialmente para você. Perfeito para casamentos, eventos formais e momentos memoráveis.',
-	},
-	{
-		title: 'Costumes',
-		text: 'Para quem busca versatilidade sem abrir mão do estilo. O costume (paletó + calça) é ideal para o dia a dia profissional ou eventos sociais.',
-	},
-	{
-		title: 'Paletós',
-		text: 'Sofisticação em peça única. O paletó sob medida é ideal para compor looks elegantes com personalidade. Ajuste anatômico, corte refinado e acabamento artesanal.',
-	},
-	{
-		title: 'Calças',
-		text: 'Mais do que vestir bem: vestir com conforto e estilo. Nossas calças são desenhadas para o seu corpo, com caimento perfeito e tecidos escolhidos a dedo para cada ocasião.',
-	},
-	{
-		title: 'Camisas',
-		text: 'A base do look impecável começa aqui. Camisas sob medida com gola, punho e comprimento ajustados ao seu estilo. Tecidos premium e detalhes que fazem a diferença.',
-	},
-];
-
-const beneficios = [
-	{
-		title: 'Tradição e Excelência',
-		text: 'Mais de 12 anos dedicados à alfaiataria masculina de alto padrão. Nossa experiência se reflete em cada corte, prova e acabamento.',
-	},
-	{
-		title: 'Tecidos Nobres e Exclusivos',
-		text: 'Utilizamos apenas lanifícios premiados na Europa: Drago, Zegna, Loro Piana, entre outros. Cada tecido conta uma história de elegância.',
-	},
-	{
-		title: 'Bespoke, de Verdade',
-		text: 'Todas as peças são feitas uma a uma, 100% bespoke. Atendimento personalizado, com discrição, pontualidade e atenção aos mínimos detalhes.',
-	},
-];
-
-const processo = [
-	{
-		title: 'Qual é a ocasião?',
-		text: 'Aqui iremos entender para qual ocasião é o traje. Para o trabalho (rotina, cores usuais, deslocamento, cargo, viagens e etc) ou para um casamento (tipo da cerimônia, local, estação).',
-	},
-	{
-		title: 'Tecidos e padronagem',
-		text: 'Nessa fase apresentaremos os melhores tecidos de acordo com a ocasião, definiremos juntos os forros, aviamentos e composição.',
-	},
-	{
-		title: 'Medidas corporais',
-		text: 'Agora faremos a medição de todo o corpo para que possamos ajustar o corte e tecidos perfeitamente a cada biotipo corporal.',
-	},
-	{
-		title: 'Provas',
-		text: 'São feitas no mínimo 4 provas num local de escolha do cliente, para a manipulação do tecido no corpo, eliminando assim sobras de tecido e rugas, para um caimento perfeito.',
-	},
-];
-
 const exploreCards = [
 	{
 		href: TERNOS_SOB_MEDIDA_HUB.path,
@@ -98,88 +48,15 @@ const exploreCards = [
 ---
 
 <BaseLayout {title} {description} {canonical} {schema}>
+	<Hero />
+	<ProductGrid />
+	<BenefitsCards />
+	<AboutTeaser />
+	<ProcessFlipCards />
+	<Testimonials />
+	<PartnersCarousel />
+	<ContactSection />
 	<article class="home">
-		<section class="hero">
-			<h1>Terno Sob Medida Bespoke em São Paulo</h1>
-			<p>
-				Desde 2012, peças únicas feitas com os melhores tecidos da Europa. Agende sua prova
-				e descubra o caimento do Bespoke Full Canvas.
-			</p>
-			<CTAWhatsapp texto="Agendar prova" />
-		</section>
-
-		<section aria-labelledby="bespoke-heading">
-			<h2 id="bespoke-heading">Esqueça o sob medida. Descubra o verdadeiro Bespoke Full Canvas.</h2>
-			<p>Sempre com ajuste perfeito, corte impecável e atendimento exclusivo.</p>
-			<ul class="pecas">
-				{
-					pecas.map((peca) => (
-						<li>
-							<h3>{peca.title}</h3>
-							<p>{peca.text}</p>
-						</li>
-					))
-				}
-			</ul>
-		</section>
-
-		<section aria-labelledby="porque-heading">
-			<h2 id="porque-heading">Por que escolher a Sartoria Via Italy</h2>
-			<ul class="beneficios">
-				{
-					beneficios.map((item) => (
-						<li>
-							<h3>{item.title}</h3>
-							<p>{item.text}</p>
-						</li>
-					))
-				}
-			</ul>
-		</section>
-
-		<section aria-labelledby="sobre-heading">
-			<h2 id="sobre-heading">Sartoria Via Italy: excelência em alfaiataria bespoke</h2>
-			<p>
-				Desde 2012, confeccionamos ternos Bespoke Full Canvas totalmente artesanais com os
-				melhores tecidos da Europa. Cada peça é criada para oferecer exclusividade, caimento
-				impecável e elegância feita para durar.
-			</p>
-			<p>
-				<a href="/sobre/">Conheça o fundador e o ofício da casa.</a>
-			</p>
-		</section>
-
-		<section aria-labelledby="processo-heading">
-			<h2 id="processo-heading">Processo de criação</h2>
-			<ol class="processo">
-				{
-					processo.map((etapa) => (
-						<li>
-							<h3>{etapa.title}</h3>
-							<p>{etapa.text}</p>
-						</li>
-					))
-				}
-			</ol>
-		</section>
-
-		<section class="visitar" aria-labelledby="visitar-heading">
-			<h2 id="visitar-heading">Venha nos visitar</h2>
-			<address>
-				<p>{site.address.street}</p>
-				<p>
-					{site.address.neighborhood} — {site.address.city}/{site.address.region},{' '}
-					{site.address.postalCode}
-				</p>
-				<p>Horário de funcionamento: {site.hours}</p>
-				<p>
-					WhatsApp:{' '}
-					<a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
-				</p>
-			</address>
-			<CTAWhatsapp texto="Agendar atendimento" />
-		</section>
-
 		<section class="explore" aria-labelledby="explore-heading">
 			<h2 id="explore-heading">Explore</h2>
 			<ul class="cards">
@@ -202,20 +79,7 @@ const exploreCards = [
 	.home {
 		max-width: 72rem;
 		margin-inline: auto;
-		padding: var(--space-12) var(--space-4);
-	}
-
-	.hero {
-		max-width: 46rem;
-		margin-bottom: var(--space-12);
-	}
-
-	h1 {
-		margin: 0 0 var(--space-4);
-		font-family: var(--font-display);
-		font-size: clamp(1.9rem, 4vw, 2.75rem);
-		line-height: 1.2;
-		color: var(--color-navy);
+		padding: var(--space-8) var(--space-4) var(--space-12);
 	}
 
 	h2 {
@@ -240,28 +104,15 @@ const exploreCards = [
 		margin-bottom: var(--space-12);
 	}
 
-	.pecas,
-	.beneficios,
-	.processo,
 	.cards {
+		display: grid;
+		gap: var(--space-6);
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
 
-	.pecas,
-	.beneficios,
-	.cards {
-		display: grid;
-		gap: var(--space-6);
-	}
-
 	@media (min-width: 48rem) {
-		.pecas,
-		.beneficios {
-			grid-template-columns: repeat(2, 1fr);
-		}
-
 		.cards {
 			grid-template-columns: repeat(2, 1fr);
 		}
@@ -273,33 +124,11 @@ const exploreCards = [
 		}
 	}
 
-	.pecas li,
-	.beneficios li,
-	.processo li,
 	.cards a {
 		padding: var(--space-6);
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius);
 		background-color: var(--color-bg);
-	}
-
-	.processo {
-		display: grid;
-		gap: var(--space-4);
-	}
-
-	.processo li {
-		background-color: var(--color-cream);
-	}
-
-	.visitar address {
-		font-style: normal;
-		margin-bottom: var(--space-6);
-	}
-
-	a {
-		color: var(--color-navy);
-		font-weight: 600;
 	}
 
 	.cards a {

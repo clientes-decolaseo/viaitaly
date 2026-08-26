@@ -1,0 +1,150 @@
+---
+const partners = [
+	'Loro Piana',
+	'Cerruti',
+	'Ermenegildo Zegna',
+	'Reda',
+	'Drago',
+	'Piacenza',
+	'Dormeuil',
+];
+---
+
+<section class="partners" aria-labelledby="partners-heading">
+	<div class="inner">
+		<h2 id="partners-heading">
+			Parceiros na <span class="text-gradient-red">Europa</span>
+		</h2>
+		<div class="carousel" data-partners-carousel>
+			<button type="button" class="nav prev" data-prev aria-label="Ver parceiros anteriores">
+				<span aria-hidden="true">‹</span>
+			</button>
+			<ul class="track" tabindex="0">
+				{
+					partners.map((name) => (
+						<li>
+							<div class="slot" role="img" aria-label={`Logo de ${name} — placeholder`}>
+								<span>{name}</span>
+							</div>
+						</li>
+					))
+				}
+			</ul>
+			<button type="button" class="nav next" data-next aria-label="Ver próximos parceiros">
+				<span aria-hidden="true">›</span>
+			</button>
+		</div>
+	</div>
+</section>
+
+<script>
+	document.querySelectorAll('[data-partners-carousel]').forEach((root) => {
+		const track = root.querySelector<HTMLElement>('.track');
+		const prev = root.querySelector<HTMLButtonElement>('[data-prev]');
+		const next = root.querySelector<HTMLButtonElement>('[data-next]');
+		if (!track || !prev || !next) return;
+
+		const scrollByCard = (direction: number) => {
+			const card = track.querySelector('li');
+			const amount = card ? card.getBoundingClientRect().width + 16 : track.clientWidth * 0.7;
+			track.scrollBy({ left: direction * amount, behavior: 'smooth' });
+		};
+
+		prev.addEventListener('click', () => scrollByCard(-1));
+		next.addEventListener('click', () => scrollByCard(1));
+	});
+</script>
+
+<style>
+	.partners {
+		padding: var(--space-12) var(--space-4);
+		background-color: var(--color-white);
+	}
+
+	.inner {
+		max-width: var(--max-width);
+		margin-inline: auto;
+	}
+
+	h2 {
+		margin: 0 0 var(--space-8);
+		text-align: center;
+	}
+
+	.carousel {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		align-items: center;
+		gap: var(--space-3);
+	}
+
+	.track {
+		display: grid;
+		grid-auto-columns: minmax(10.5rem, 42%);
+		grid-auto-flow: column;
+		gap: var(--space-4);
+		margin: 0;
+		padding: 0.25rem 0 var(--space-2);
+		overflow-x: auto;
+		list-style: none;
+		scroll-snap-type: x mandatory;
+		scrollbar-width: thin;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.track li {
+		scroll-snap-align: start;
+	}
+
+	.slot {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 6.5rem;
+		padding: var(--space-4);
+		border: 1px dashed rgb(109 119 133 / 0.45);
+		background-color: #f3f2ee;
+		text-align: center;
+	}
+
+	.slot span {
+		color: var(--color-primary);
+		font-family: var(--font-display);
+		font-size: 1.05rem;
+		font-weight: 700;
+		line-height: 1.2;
+	}
+
+	.nav {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		border: 1px solid var(--color-border-muted);
+		border-radius: 999px;
+		background: var(--color-white);
+		color: var(--color-primary);
+		font-size: 1.5rem;
+		line-height: 1;
+		cursor: pointer;
+	}
+
+	.nav:hover,
+	.nav:focus-visible {
+		border-color: var(--color-brand-green);
+		color: var(--color-brand-green);
+	}
+
+	@media (min-width: 64rem) {
+		.track {
+			grid-auto-columns: minmax(11rem, calc((100% - 4.5rem) / 4));
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.track {
+			scroll-snap-type: none;
+		}
+	}
+</style>

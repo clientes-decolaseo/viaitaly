@@ -1,111 +1,154 @@
 ---
-import cluster from '../data/blog-cluster';
+import { Image } from 'astro:assets';
+import logo from '../assets/logo-via-italy.webp';
 import site from '../data/site.json';
 
 const year = new Date().getFullYear();
-const addressLine = `${site.address.street}, ${site.address.neighborhood} — ${site.address.city}/${site.address.region}, ${site.address.postalCode}`;
-
-const institutionalLinks = [
-	{ href: '/', label: 'Início' },
-	{ href: cluster.pillar.href, label: cluster.pillar.label },
-	{ href: '/sobre/', label: 'Sobre' },
-	{ href: '/blog/', label: 'Blog' },
-	{ href: '/contato/', label: 'Contato' },
-];
+const whatsappHref = `https://wa.me/${site.whatsapp}`;
+const addressDisplay = 'R. Silva Bueno, 599 - Conjunto 511 - Ipiranga, São Paulo - SP, 04208-050';
 ---
 
 <footer>
 	<div class="inner">
-		<section class="nap" aria-labelledby="footer-nap-heading">
-			<h2 id="footer-nap-heading">{site.name}</h2>
-			<address>
-				<p>{addressLine}</p>
-				<p>
-					<a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
-				</p>
-				<p>{site.hours}</p>
-			</address>
-		</section>
+		<a class="logo" href="/" aria-label={`${site.name} — página inicial`}>
+			<Image
+				src={logo}
+				alt="Sartoria Via Italy"
+				width={119}
+				height={73}
+				format="webp"
+				quality="mid"
+				loading="lazy"
+			/>
+		</a>
 
-		<nav aria-label="Links institucionais">
+		<section class="contact" aria-labelledby="footer-contact-heading">
+			<h2 id="footer-contact-heading">Contato</h2>
 			<ul>
-				{
-					institutionalLinks.map((item) => (
-						<li>
-							<a href={item.href}>{item.label}</a>
-						</li>
-					))
-				}
+				<li>
+					<a href={site.instagram} target="_blank" rel="noopener noreferrer">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+							<rect x="3" y="3" width="18" height="18" rx="5"></rect>
+							<circle cx="12" cy="12" r="4"></circle>
+							<circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle>
+						</svg>
+						<span>@sartoriaviaitaly</span>
+					</a>
+				</li>
+				<li>
+					<a href={whatsappHref} target="_blank" rel="noopener noreferrer">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+							<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"></path>
+						</svg>
+						<span>(11) 99662-7391</span>
+					</a>
+				</li>
+				<li>
+					<p>
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+							<path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z"></path>
+							<circle cx="12" cy="10" r="2.5"></circle>
+						</svg>
+						<span>{addressDisplay}</span>
+					</p>
+				</li>
 			</ul>
-		</nav>
+		</section>
 	</div>
-	<p class="copy">© {year} {site.name}. Alfaiataria bespoke em São Paulo.</p>
+	<p class="copy">© {year} {site.name}</p>
 </footer>
 
 <style>
 	footer {
 		margin-top: auto;
-		border-top: 1px solid var(--color-border);
-		background-color: var(--color-navy);
-		color: #f5f0e6;
+		background-color: var(--color-brand-green);
+		color: var(--color-cream);
+		font-family: var(--font-body);
 	}
 
 	.inner {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
+		display: grid;
 		gap: var(--space-8);
 		max-width: var(--max-width);
 		margin-inline: auto;
 		padding: var(--space-12) var(--space-4) var(--space-8);
 	}
 
-	h2 {
-		margin: 0 0 var(--space-3);
-		font-family: var(--font-display);
-		font-size: 1.35rem;
-		font-weight: 700;
-		color: #fff;
-	}
-
-	address {
-		font-style: normal;
-	}
-
-	address p {
-		margin: 0 0 var(--space-2);
-		color: #d6d0c4;
-	}
-
-	a {
-		color: #f5f0e6;
-		text-decoration: none;
-	}
-
-	a:hover {
-		color: var(--color-gold);
-		text-decoration: underline;
-	}
-
-	nav ul {
+	.logo {
 		display: flex;
-		flex-direction: column;
-		gap: var(--space-2);
+		align-items: center;
+		width: fit-content;
+		line-height: 0;
+	}
+
+	.logo :global(img) {
+		display: block;
+		height: 73px;
+		width: auto;
+	}
+
+	.contact h2 {
+		margin: 0 0 var(--space-3);
+		padding-bottom: var(--space-3);
+		border-bottom: 1px solid rgb(255 255 255 / 0.45);
+		color: var(--color-white);
+		font-family: var(--font-body);
+		font-size: 1rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.contact ul {
+		display: grid;
+		gap: var(--space-3);
 		margin: 0;
 		padding: 0;
 		list-style: none;
 	}
 
-	nav a {
-		font-weight: 600;
+	.contact a,
+	.contact p {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.7rem;
+		margin: 0;
+		color: var(--color-cream);
+		font-size: 0.95rem;
+		line-height: 1.5;
+		text-decoration: none;
+	}
+
+	.contact a:hover,
+	.contact a:focus-visible {
+		color: var(--color-white);
+		text-decoration: underline;
+		text-underline-offset: 0.18em;
+	}
+
+	.contact svg {
+		flex-shrink: 0;
+		margin-top: 0.2rem;
 	}
 
 	.copy {
 		margin: 0;
 		padding: var(--space-4);
-		border-top: 1px solid rgb(255 255 255 / 0.12);
-		color: #b8b1a4;
-		font-size: 0.875rem;
+		border-top: 1px solid rgb(255 255 255 / 0.2);
+		color: var(--color-cream);
+		font-size: 0.8rem;
 		text-align: center;
+	}
+
+	@media (min-width: 64rem) {
+		.inner {
+			grid-template-columns: 1fr 1fr;
+			align-items: start;
+		}
+
+		.contact {
+			justify-self: end;
+			min-width: 22rem;
+		}
 	}
 </style>

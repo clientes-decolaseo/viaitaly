@@ -1,0 +1,97 @@
+---
+import { Image } from 'astro:assets';
+import heroImage from '../assets/images/home/hero.webp';
+
+const whatsappHref = `https://wa.me/5511996627391?text=${encodeURIComponent('Olá, vim pelo site!')}`;
+---
+
+<section class="hero" aria-labelledby="hero-heading">
+	<Image
+		class="hero-image"
+		src={heroImage}
+		alt="Manequim masculino com paletó em ateliê de alfaiataria, ao lado de ferramentas de costura"
+		widths={[800, 1280, 1920, 2560]}
+		sizes="100vw"
+		format="webp"
+		quality="mid"
+		loading="eager"
+		fetchpriority="high"
+	/>
+	<div class="overlay" aria-hidden="true"></div>
+	<div class="inner">
+		<h1 id="hero-heading">
+			Bespoke Full Canvas. A verdadeira alfaiataria italiana para homens que exigem excelência.
+		</h1>
+		<p>
+			Desde 2012, peças únicas feitas com os melhores tecidos da Europa. Agende seu atendimento
+			personalizado.
+		</p>
+		<a
+			class="btn-primary"
+			href={whatsappHref}
+			target="_blank"
+			rel="noopener noreferrer"
+			aria-label="Realizar orçamento (abre o WhatsApp em nova aba)"
+		>
+			Realizar orçamento
+		</a>
+	</div>
+</section>
+
+<style>
+	.hero {
+		position: relative;
+		display: grid;
+		align-items: center;
+		min-height: 90vh;
+		margin-top: -5.75rem;
+		overflow: hidden;
+	}
+
+	.hero-image,
+	.hero :global(img) {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center top;
+	}
+
+	.overlay {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 79%, rgba(255, 255, 255, 1) 100%);
+		pointer-events: none;
+	}
+
+	.inner {
+		position: relative;
+		z-index: 2;
+		width: min(72rem, 100%);
+		margin-inline: auto;
+		padding: 8.5rem var(--space-4) 5.5rem;
+	}
+
+	h1 {
+		max-width: 18ch;
+		margin: 0 0 1.25rem;
+		color: var(--color-cream);
+	}
+
+	p {
+		max-width: 36rem;
+		margin: 0 0 2rem;
+		color: var(--color-white);
+		font-size: 16px;
+		line-height: 1.6;
+	}
+
+	@media (min-width: 64rem) {
+		.hero {
+			min-height: 800px;
+		}
+	}
+</style>

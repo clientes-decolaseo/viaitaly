@@ -1,15 +1,19 @@
 :root {
-	--color-navy: #1a2744;
-	--color-navy-soft: #243356;
-	--color-gold: #b8954a;
-	--color-gold-dark: #8f7030;
-	--color-ink: #1c1917;
-	--color-ink-soft: #57534e;
-	--color-cream: #f7f3eb;
-	--color-bg: #ffffff;
-	--color-border: #e7e0d4;
-	--color-whatsapp: #128c7e;
-	--color-whatsapp-dark: #075e54;
+	/* Cores extraídas do CSS real do site atual (Elementor kit-9) */
+	--color-primary: #0F1011; /* texto escuro / headings em fundo claro */
+	--color-secondary: #545454; /* corpo de texto */
+	--color-brand-green: #008500; /* cor de marca — CTAs, links */
+	--color-dark-navy: #061618; /* fundo header, overlay hero, seção sobre */
+	--color-cream: #E4E3DD; /* texto sobre fundo escuro */
+	--color-accent-red-start: #E9283A;
+	--color-accent-red-end: #87010F;
+	--color-white: #FFFFFF;
+	--color-border-muted: #6D7785;
+
+	--font-display: "Cormorant", serif;
+	--font-body: "Lato", sans-serif;
+	--font-accent: "Roboto", sans-serif;
+
 	--space-1: 0.25rem;
 	--space-2: 0.5rem;
 	--space-3: 0.75rem;
@@ -17,10 +21,20 @@
 	--space-6: 1.5rem;
 	--space-8: 2rem;
 	--space-12: 3rem;
-	--font-body: "Segoe UI", system-ui, sans-serif;
-	--font-display: Georgia, "Times New Roman", serif;
 	--radius: 0.375rem;
 	--max-width: 72rem;
+
+	/* Aliases usados pelos componentes até a migração completa */
+	--color-navy: var(--color-dark-navy);
+	--color-navy-soft: var(--color-dark-navy);
+	--color-gold: var(--color-brand-green);
+	--color-gold-dark: var(--color-brand-green);
+	--color-ink: var(--color-primary);
+	--color-ink-soft: var(--color-secondary);
+	--color-bg: var(--color-white);
+	--color-border: var(--color-border-muted);
+	--color-whatsapp: var(--color-brand-green);
+	--color-whatsapp-dark: var(--color-accent-red-start);
 }
 
 *,
@@ -36,13 +50,82 @@ html {
 body {
 	margin: 0;
 	font-family: var(--font-body);
-	color: var(--color-ink);
-	background-color: var(--color-bg);
+	color: var(--color-secondary);
+	background-color: var(--color-white);
 	line-height: 1.6;
 }
 
+h1,
+h2,
+h3 {
+	font-family: var(--font-display);
+	color: var(--color-primary);
+	font-weight: 700;
+}
+
+h1 {
+	font-size: 80px;
+	line-height: 1.1;
+}
+
+h2 {
+	font-size: 58px;
+	line-height: 1.1;
+}
+
+h3 {
+	font-size: 48px;
+	line-height: 1.17;
+}
+
+@media (max-width: 1024px) {
+	h1 {
+		font-size: 58px;
+	}
+
+	h2 {
+		font-size: 42px;
+	}
+
+	h3 {
+		font-size: 36px;
+	}
+}
+
+@media (max-width: 767px) {
+	h1 {
+		font-size: 48px;
+	}
+}
+
+.text-gradient-red {
+	background: linear-gradient(180deg, var(--color-accent-red-start) 0%, var(--color-accent-red-end) 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.btn-primary {
+	display: inline-block;
+	padding: 17px 34px;
+	border-radius: 5px;
+	background-color: var(--color-brand-green);
+	color: var(--color-white);
+	font-family: var(--font-display);
+	font-size: 21px;
+	font-weight: 700;
+	letter-spacing: 0.8px;
+	text-transform: uppercase;
+	text-decoration: none;
+	transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+	background-color: var(--color-accent-red-start);
+}
+
 :focus-visible {
-	outline: 2px solid var(--color-gold);
+	outline: 2px solid var(--color-brand-green);
 	outline-offset: 2px;
 }
 
@@ -57,11 +140,11 @@ img {
 	top: 0;
 	z-index: 100;
 	padding: var(--space-2) var(--space-4);
-	background-color: var(--color-navy);
-	color: #fff;
+	border-radius: var(--radius);
+	background-color: var(--color-dark-navy);
+	color: var(--color-cream);
 	font-weight: 700;
 	text-decoration: none;
-	border-radius: var(--radius);
 }
 
 .skip-link:focus {

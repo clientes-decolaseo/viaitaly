@@ -1,0 +1,185 @@
+---
+const reviews = [
+	{
+		name: 'Heitor Forner',
+		date: 'Junho 2025',
+		quote:
+			'Fiz o terno do meu casamento. Recomendo muito. Sergio foi fantástico durante todo o processo.',
+	},
+	{
+		name: 'Kaio Araujo',
+		date: 'Maio 2025',
+		quote: 'Ótimo atendimento, pontual na entrega e qualidade excelente de tecido!',
+	},
+	{
+		name: 'Enzo Caldeira',
+		date: 'Julho 2025',
+		quote:
+			'Fazer ternos com a Sartoria Via Italy é certeza de que terá uma bela peça com durabilidade. Além de trabalhar com os melhores tecidos, o Sérgio sabe muito bem como encaixar a peça em cada corpo. Recomendo!',
+	},
+	{
+		name: 'Paulo Ferreira',
+		date: 'Junho 2025',
+		quote:
+			'Excelente atendimento. Produto de altíssima qualidade. Serviço personalizado. Vale muito a pena para quem procura qualidade e especificidade.',
+	},
+	{
+		name: 'Camilo Paiva',
+		date: 'Abril 2025',
+		quote: 'Excelente, melhor alfaiataria de São Paulo, recomendo.',
+	},
+	{
+		name: 'André Dyl',
+		date: 'Abril 2025',
+		quote:
+			'Fiz o meu terno para o meu casamento em Setembro de 2024. Achei a Sartoria Via Italy pela internet mesmo e confiei nas avaliações do Google! Entrei em contato e fui muito bem atendido pelo Sérgio. O resultado final foi incrível: terno de altíssima qualidade, super bem ajustado e com atenção aos detalhes.',
+	},
+];
+---
+
+<section class="testimonials" aria-labelledby="testimonials-heading">
+	<div class="inner">
+		<div class="rating" aria-label="Avaliação excelente, 5 de 5, com base em 67 avaliações no Google">
+			<p class="score">Excelente</p>
+			<p class="stars" aria-hidden="true">★★★★★</p>
+			<p class="meta">Com base em 67 avaliações</p>
+			<p class="source">Google</p>
+		</div>
+		<h2 id="testimonials-heading">Conheça nossos clientes</h2>
+		<ul class="scroller">
+			{
+				reviews.map((review) => (
+					<li>
+						<figure>
+							<figcaption>
+								<strong>{review.name}</strong>
+								<span>{review.date}</span>
+							</figcaption>
+							<p class="stars" aria-hidden="true">★★★★★</p>
+							<blockquote>
+								<p>{review.quote}</p>
+							</blockquote>
+						</figure>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
+
+<style>
+	.testimonials {
+		padding: var(--space-12) var(--space-4);
+		background-color: var(--color-white);
+	}
+
+	.inner {
+		max-width: var(--max-width);
+		margin-inline: auto;
+	}
+
+	.rating {
+		margin: 0 auto var(--space-6);
+		text-align: center;
+	}
+
+	.score {
+		margin: 0;
+		color: var(--color-primary);
+		font-family: var(--font-display);
+		font-size: 1.35rem;
+		font-weight: 700;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+	}
+
+	.stars {
+		margin: 0.2rem 0;
+		color: #f4b400;
+		font-size: 1.15rem;
+		letter-spacing: 0.12em;
+		line-height: 1;
+	}
+
+	.meta,
+	.source {
+		margin: 0;
+		color: var(--color-secondary);
+		font-size: 0.9rem;
+	}
+
+	.source {
+		margin-top: 0.2rem;
+		font-weight: 700;
+	}
+
+	h2 {
+		margin: 0 0 var(--space-8);
+		text-align: center;
+	}
+
+	.scroller {
+		display: grid;
+		grid-auto-columns: minmax(17rem, 80%);
+		grid-auto-flow: column;
+		gap: var(--space-4);
+		margin: 0;
+		padding: 0 0 var(--space-3);
+		overflow-x: auto;
+		list-style: none;
+		scroll-snap-type: x mandatory;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.scroller li {
+		scroll-snap-align: start;
+	}
+
+	figure {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		margin: 0;
+		padding: var(--space-6);
+		border: 1px dotted var(--color-border-muted);
+		background-color: #f3f2ee;
+	}
+
+	figcaption {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 0.35rem var(--space-3);
+	}
+
+	figcaption strong {
+		color: var(--color-primary);
+		font-family: var(--font-display);
+		font-size: 1.15rem;
+	}
+
+	figcaption span {
+		color: var(--color-secondary);
+		font-size: 0.8rem;
+	}
+
+	blockquote {
+		margin: 0;
+	}
+
+	blockquote p {
+		margin: 0;
+		color: var(--color-secondary);
+		line-height: 1.6;
+	}
+
+	@media (min-width: 64rem) {
+		.scroller {
+			grid-auto-flow: row;
+			grid-template-columns: repeat(3, 1fr);
+			overflow: visible;
+			padding-bottom: 0;
+		}
+	}
+</style>

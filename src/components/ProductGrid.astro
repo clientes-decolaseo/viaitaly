@@ -1,0 +1,155 @@
+---
+const pecas = [
+	{
+		title: 'Ternos',
+		text: 'O clássico da elegância masculina, feito especialmente para você. Perfeito para casamentos, eventos formais e momentos memoráveis.',
+	},
+	{
+		title: 'Costumes',
+		text: 'Para quem busca versatilidade sem abrir mão do estilo. O costume (paletó + calça) é ideal para o dia a dia profissional ou eventos sociais.',
+	},
+	{
+		title: 'Paletós',
+		text: 'Sofisticação em peça única. O paletó sob medida é ideal para compor looks elegantes com personalidade. Ajuste anatômico, corte refinado e acabamento artesanal.',
+	},
+	{
+		title: 'Calças',
+		text: 'Mais do que vestir bem: vestir com conforto e estilo. Nossas calças são desenhadas para o seu corpo, com caimento perfeito e tecidos escolhidos a dedo para cada ocasião.',
+	},
+	{
+		title: 'Camisas',
+		text: 'A base do look impecável começa aqui. Camisas sob medida com gola, punho e comprimento ajustados ao seu estilo. Tecidos premium e detalhes que fazem a diferença.',
+	},
+];
+---
+
+<section class="products" aria-labelledby="products-heading">
+	<div class="inner">
+		<h2 id="products-heading">Esqueça o sob medida. Descubra o verdadeiro Bespoke Full Canvas.</h2>
+		<ul class="grid">
+			{
+				pecas.map((peca) => (
+					<li>
+						<article class="card">
+							<div class="media" aria-hidden="true"></div>
+							<div class="overlay" aria-hidden="true"></div>
+							<div class="copy">
+								<h3>{peca.title}</h3>
+								<p>{peca.text}</p>
+							</div>
+						</article>
+					</li>
+				))
+			}
+		</ul>
+		<p class="tagline">Sempre com ajuste perfeito, corte impecável e atendimento exclusivo.</p>
+	</div>
+</section>
+
+<style>
+	.products {
+		padding: var(--space-12) var(--space-4);
+		background-color: var(--color-white);
+	}
+
+	.inner {
+		max-width: var(--max-width);
+		margin-inline: auto;
+	}
+
+	h2 {
+		max-width: 18ch;
+		margin: 0 auto var(--space-8);
+		text-align: center;
+	}
+
+	.grid {
+		display: grid;
+		gap: var(--space-4);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.card {
+		position: relative;
+		display: flex;
+		min-height: 22rem;
+		overflow: hidden;
+		border: 1px dashed rgb(228 227 221 / 0.45);
+		background-color: var(--color-dark-navy);
+		transition: border-color 0.3s;
+	}
+
+	.media {
+		position: absolute;
+		inset: 0;
+		background-color: var(--color-dark-navy);
+	}
+
+	.overlay {
+		position: absolute;
+		inset: 0;
+		background-color: rgb(0 0 0 / 0.45);
+		transition: background-color 0.3s;
+	}
+
+	.card:hover,
+	.card:focus-within {
+		border-color: var(--color-brand-green);
+	}
+
+	.card:hover .overlay,
+	.card:focus-within .overlay {
+		background-color: rgb(0 0 0 / 0.72);
+	}
+
+	.copy {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		gap: var(--space-2);
+		padding: var(--space-6);
+	}
+
+	h3 {
+		margin: 0;
+		color: var(--color-white);
+		font-family: var(--font-body);
+		font-size: 22px;
+		font-weight: 700;
+		line-height: 1.2;
+	}
+
+	.copy p {
+		margin: 0;
+		color: var(--color-cream);
+		font-size: 0.9rem;
+		line-height: 1.5;
+	}
+
+	.tagline {
+		max-width: 36rem;
+		margin: var(--space-8) auto 0;
+		text-align: center;
+		color: var(--color-secondary);
+	}
+
+	@media (min-width: 48rem) {
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 80rem) {
+		.grid {
+			grid-template-columns: repeat(5, 1fr);
+		}
+
+		.card {
+			min-height: 26rem;
+		}
+	}
+</style>

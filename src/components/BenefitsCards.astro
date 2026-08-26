@@ -1,0 +1,200 @@
+---
+const cards = [
+	{
+		title: 'Tradição e Excelência',
+		text: 'Mais de 12 anos dedicados à alfaiataria masculina de alto padrão. Nossa experiência se reflete em cada corte, prova e acabamento.',
+		href: '/sobre/',
+		icon: 'medal',
+		featured: false,
+	},
+	{
+		title: 'Tecidos Nobres e Exclusivos',
+		text: 'Utilizamos apenas lanifícios premiados na Europa: Drago, Zegna, Loro Piana, entre outros. Cada tecido conta uma história de elegância.',
+		href: '/blog/tecidos-nobres-drago-zegna-loro-piana/',
+		icon: 'diamond',
+		featured: true,
+	},
+	{
+		title: 'Bespoke, de Verdade',
+		text: 'Todas as peças são feitas uma a uma, 100% bespoke. Atendimento personalizado, com discrição, pontualidade e atenção aos mínimos detalhes.',
+		href: '/blog/como-funciona-processo-bespoke/',
+		icon: 'scissors',
+		featured: false,
+	},
+] as const;
+---
+
+<section class="benefits" aria-labelledby="benefits-heading">
+	<div class="inner">
+		<p class="eyebrow">benefícios</p>
+		<h2 id="benefits-heading">
+			Por que escolher a <span class="text-gradient-red">Sartoria Via Italy</span>
+		</h2>
+		<ul class="grid">
+			{
+				cards.map((card) => (
+					<li>
+						<article class:list={['card', card.featured && 'card-featured']}>
+							<span class="icon" aria-hidden="true">
+								{card.icon === 'medal' && (
+									<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+										<circle cx="12" cy="9" r="5.5"></circle>
+										<path d="M8.2 14.2 6 21l6-2.4L18 21l-2.2-6.8"></path>
+										<circle cx="12" cy="9" r="2"></circle>
+									</svg>
+								)}
+								{card.icon === 'diamond' && (
+									<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+										<path d="M3.5 9.5 12 3l8.5 6.5L12 21 3.5 9.5Z"></path>
+										<path d="M3.5 9.5h17"></path>
+										<path d="m8 9.5 4 11.5 4-11.5"></path>
+										<path d="M8 9.5 12 3l4 6.5"></path>
+									</svg>
+								)}
+								{card.icon === 'scissors' && (
+									<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+										<circle cx="6" cy="7" r="2.5"></circle>
+										<circle cx="6" cy="17" r="2.5"></circle>
+										<path d="m8.2 8.6 11.3-5.1"></path>
+										<path d="m8.2 15.4 11.3 5.1"></path>
+										<path d="M8 12h4"></path>
+									</svg>
+								)}
+							</span>
+							<h3>{card.title}</h3>
+							<p>{card.text}</p>
+							<a href={card.href}>Saiba mais</a>
+						</article>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
+
+<style>
+	.benefits {
+		padding: var(--space-12) var(--space-4);
+		background-color: var(--color-white);
+	}
+
+	.inner {
+		max-width: var(--max-width);
+		margin-inline: auto;
+	}
+
+	.eyebrow {
+		margin: 0 0 var(--space-3);
+		color: var(--color-border-muted);
+		font-family: var(--font-body);
+		font-size: 14px;
+		font-weight: 700;
+		letter-spacing: 3px;
+		text-transform: uppercase;
+	}
+
+	h2 {
+		max-width: 16ch;
+		margin: 0 0 var(--space-8);
+	}
+
+	.grid {
+		display: grid;
+		gap: var(--space-6);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.card {
+		display: flex;
+		flex-direction: column;
+		min-height: 100%;
+		padding: var(--space-8) var(--space-6);
+		border: 1px dotted var(--color-border-muted);
+		background-color: var(--color-white);
+	}
+
+	.card-featured {
+		position: relative;
+		overflow: hidden;
+		color: var(--color-white);
+		background-color: var(--color-dark-navy);
+	}
+
+	.card-featured::before {
+		position: absolute;
+		inset: 0;
+		background-color: var(--color-accent-red-start);
+		content: '';
+		opacity: 0.82;
+	}
+
+	.card-featured > * {
+		position: relative;
+		z-index: 1;
+	}
+
+	.icon {
+		display: inline-flex;
+		margin-bottom: var(--space-4);
+		color: var(--color-primary);
+	}
+
+	.card-featured .icon {
+		color: var(--color-white);
+	}
+
+	h3 {
+		margin: 0 0 var(--space-3);
+		font-family: var(--font-display);
+		font-size: 1.5rem;
+		line-height: 1.2;
+		color: var(--color-primary);
+	}
+
+	.card-featured h3 {
+		color: var(--color-white);
+	}
+
+	.card p {
+		flex: 1 1 auto;
+		margin: 0 0 var(--space-6);
+		color: var(--color-secondary);
+		line-height: 1.6;
+	}
+
+	.card-featured p {
+		color: var(--color-white);
+	}
+
+	.card a {
+		align-self: flex-start;
+		color: inherit;
+		font-family: var(--font-body);
+		font-size: 0.8rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		text-underline-offset: 0.28em;
+	}
+
+	.card-featured a {
+		color: var(--color-white);
+	}
+
+	.card a:hover {
+		color: var(--color-brand-green);
+	}
+
+	.card-featured a:hover {
+		color: var(--color-cream);
+	}
+
+	@media (min-width: 64rem) {
+		.grid {
+			grid-template-columns: repeat(3, 1fr);
+			align-items: stretch;
+		}
+	}
+</style>

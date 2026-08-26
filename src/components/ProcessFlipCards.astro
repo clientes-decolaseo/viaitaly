@@ -1,0 +1,171 @@
+---
+const etapas = [
+	{
+		front: 'QUAL É A OCASIÃO?',
+		back: 'Aqui iremos entender para qual ocasião é o traje. Para o trabalho (rotina, cores usuais, deslocamento, cargo, viagens e etc) ou para um casamento (tipo da cerimônia, local, estação).',
+	},
+	{
+		front: 'TECIDOS E PADRONAGEM',
+		back: 'Nessa fase apresentaremos os melhores tecidos de acordo com a ocasião, definiremos juntos os forros, aviamentos e composição.',
+	},
+	{
+		front: 'MEDIDAS CORPORAIS',
+		back: 'Agora faremos a medição de todo o corpo para que possamos ajustar o corte e tecidos perfeitamente a cada biotipo corporal.',
+	},
+	{
+		front: 'PROVAS',
+		back: 'São feitas no mínimo 4 provas num local de escolha do cliente, para a manipulação do tecido no corpo, eliminando assim sobras de tecido e rugas, para um caimento perfeito.',
+	},
+];
+---
+
+<section class="process" aria-labelledby="process-heading">
+	<div class="inner">
+		<h2 id="process-heading">Processo de criação</h2>
+		<ol class="grid">
+			{
+				etapas.map((etapa) => (
+					<li>
+						<article class="card" tabindex="0">
+							<div class="flip">
+								<div class="face front">
+									<h3>{etapa.front}</h3>
+								</div>
+								<div class="face back">
+									<p>{etapa.back}</p>
+								</div>
+							</div>
+						</article>
+					</li>
+				))
+			}
+		</ol>
+	</div>
+</section>
+
+<style>
+	.process {
+		padding: var(--space-12) var(--space-4);
+		background-color: var(--color-white);
+	}
+
+	.inner {
+		max-width: var(--max-width);
+		margin-inline: auto;
+	}
+
+	h2 {
+		margin: 0 0 var(--space-8);
+		text-align: center;
+	}
+
+	.grid {
+		display: grid;
+		gap: var(--space-6);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		counter-reset: none;
+	}
+
+	.card {
+		height: 18rem;
+		perspective: 1000px;
+		cursor: pointer;
+	}
+
+	.flip {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		transform-style: preserve-3d;
+		transition: transform 0.6s ease;
+	}
+
+	.card:hover .flip,
+	.card:focus-within .flip {
+		transform: rotateY(180deg);
+	}
+
+	.face {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: var(--space-6);
+		backface-visibility: hidden;
+		-webkit-backface-visibility: hidden;
+	}
+
+	.front {
+		background-color: #f3f2ee;
+		color: var(--color-primary);
+	}
+
+	.back {
+		background-color: #737373;
+		color: var(--color-white);
+		transform: rotateY(180deg);
+	}
+
+	h3 {
+		margin: 0;
+		text-align: center;
+		font-family: var(--font-display);
+		font-size: 1.35rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		line-height: 1.2;
+		text-transform: uppercase;
+	}
+
+	.back p {
+		margin: 0;
+		text-align: center;
+		font-size: 0.95rem;
+		line-height: 1.55;
+	}
+
+	@media (min-width: 48rem) {
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 80rem) {
+		.grid {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.card {
+			height: auto;
+		}
+
+		.flip {
+			transform: none;
+			transition: none;
+		}
+
+		.card:hover .flip,
+		.card:focus-within .flip {
+			transform: none;
+		}
+
+		.face {
+			position: relative;
+			backface-visibility: visible;
+			transform: none;
+		}
+
+		.front {
+			min-height: 5rem;
+		}
+
+		.back {
+			padding-top: 0;
+		}
+	}
+</style>

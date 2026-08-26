@@ -1,0 +1,131 @@
+<section class="about" aria-labelledby="about-heading">
+	<div class="inner">
+		<div class="copy">
+			<p class="eyebrow">Sobre nós</p>
+			<h2 id="about-heading">
+				Sartoria Via Italy
+				<span class="text-gradient-red">Excelência em alfaiataria bespoke</span>
+			</h2>
+			<p>
+				Desde 2012, confeccionamos ternos Bespoke Full Canvas totalmente artesanais com os
+				melhores tecidos da Europa. Cada peça é criada para oferecer exclusividade, caimento
+				impecável e elegância feita para durar.
+			</p>
+			<a class="btn-primary" href="/sobre/">Conheça Sergio Saturnino</a>
+		</div>
+
+		<div class="media">
+			<div class="photo" role="img" aria-label="Imagem do ateliê da Sartoria Via Italy — placeholder"></div>
+			<ul class="stats">
+				<li>
+					<strong>27+</strong>
+					<span>Anos de experiência</span>
+				</li>
+				<li>
+					<strong>1397+</strong>
+					<span>Clientes</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+<style>
+	.about {
+		padding: var(--space-12) var(--space-4);
+		background-color: var(--color-dark-navy);
+		color: var(--color-cream);
+	}
+
+	.inner {
+		display: grid;
+		gap: var(--space-8);
+		max-width: var(--max-width);
+		margin-inline: auto;
+		align-items: center;
+	}
+
+	.eyebrow {
+		margin: 0 0 var(--space-3);
+		color: var(--color-border-muted);
+		font-family: var(--font-body);
+		font-size: 14px;
+		font-weight: 700;
+		letter-spacing: 3px;
+		text-transform: uppercase;
+	}
+
+	h2 {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+		margin: 0 0 var(--space-6);
+		color: var(--color-cream);
+	}
+
+	h2 .text-gradient-red {
+		font-size: 0.72em;
+	}
+
+	.copy p {
+		max-width: 38rem;
+		margin: 0 0 var(--space-8);
+		color: var(--color-cream);
+		line-height: 1.7;
+	}
+
+	.media {
+		position: relative;
+	}
+
+	.photo {
+		min-height: 22rem;
+		background-color: #0b2427;
+		border: 1px dashed rgb(228 227 221 / 0.2);
+	}
+
+	.stats {
+		position: absolute;
+		right: var(--space-4);
+		bottom: var(--space-4);
+		display: grid;
+		gap: var(--space-3);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.stats li {
+		display: grid;
+		min-width: 10.5rem;
+		padding: 0.85rem 1.1rem;
+		background-color: var(--color-brand-green);
+		color: var(--color-white);
+	}
+
+	.stats strong {
+		font-family: var(--font-display);
+		font-size: 2rem;
+		font-weight: 700;
+		line-height: 1.1;
+	}
+
+	.stats span {
+		font-family: var(--font-body);
+		font-size: 0.8rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
+
+	@media (min-width: 64rem) {
+		.inner {
+			grid-template-columns: 1fr 1fr;
+			gap: var(--space-12);
+		}
+
+		.photo {
+			min-height: 28rem;
+		}
+	}
+</style>

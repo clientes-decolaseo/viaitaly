@@ -1,0 +1,165 @@
+---
+import site from '../data/site.json';
+
+const whatsappHref = `https://wa.me/${site.whatsapp}`;
+const mapSrc =
+	'https://maps.google.com/maps?q=SARTORIA%20VIA%20ITALY%20s%C3%A3o%20paulo&t=m&z=14&output=embed&iwloc=near';
+---
+
+<section class="contact" id="contato" aria-labelledby="contact-heading">
+	<div class="inner">
+		<div class="info">
+			<h2 id="contact-heading">Venha nos visitar</h2>
+			<address>
+				<p>Rua Silva Bueno, 599 — Sala 511</p>
+				<p>Horário de funcionamento: Seg a Sex, 9h às 19h</p>
+				<p>
+					WhatsApp:{' '}
+					<a href={whatsappHref} target="_blank" rel="noopener noreferrer">
+						(11) 99662-7391
+					</a>
+				</p>
+				<p>
+					Instagram:{' '}
+					<a href="https://www.instagram.com/sartoriaviaitaly" target="_blank" rel="noopener noreferrer">
+						@sartoriaviaitaly
+					</a>
+				</p>
+			</address>
+
+			{/* TODO: conectar endpoint de envio (Formspree ou API route). Sem backend por enquanto. */}
+			<form class="form" method="post" action="#" data-contact-form>
+				<p class="form-note">Envio de mensagens ainda não está ativo. Use o WhatsApp para falar com o ateliê.</p>
+				<label>
+					Nome
+					<input type="text" name="nome" autocomplete="name" required />
+				</label>
+				<label>
+					E-mail
+					<input type="email" name="email" autocomplete="email" required />
+				</label>
+				<label>
+					Telefone
+					<input type="tel" name="telefone" autocomplete="tel" required />
+				</label>
+				<label>
+					Mensagem
+					<textarea name="mensagem" rows="5" required></textarea>
+				</label>
+				<button class="btn-primary" type="submit">Enviar</button>
+			</form>
+		</div>
+
+		<div class="map">
+			<iframe
+				title="Mapa da Sartoria Via Italy em São Paulo"
+				src={mapSrc}
+				height="350"
+				loading="lazy"
+				referrerpolicy="no-referrer-when-downgrade"
+				allowfullscreen
+			></iframe>
+		</div>
+	</div>
+</section>
+
+<script>
+	document.querySelectorAll<HTMLFormElement>('[data-contact-form]').forEach((form) => {
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+		});
+	});
+</script>
+
+<style>
+	.contact {
+		padding: var(--space-12) var(--space-4);
+		background-color: var(--color-white);
+	}
+
+	.inner {
+		display: grid;
+		gap: var(--space-8);
+		max-width: var(--max-width);
+		margin-inline: auto;
+	}
+
+	h2 {
+		margin: 0 0 var(--space-6);
+	}
+
+	address {
+		margin: 0 0 var(--space-8);
+		font-style: normal;
+	}
+
+	address p {
+		margin: 0 0 var(--space-2);
+		color: var(--color-secondary);
+	}
+
+	address a {
+		color: var(--color-brand-green);
+		font-weight: 700;
+		text-decoration: underline;
+		text-underline-offset: 0.18em;
+	}
+
+	.form {
+		display: grid;
+		gap: var(--space-4);
+	}
+
+	.form-note {
+		margin: 0;
+		color: var(--color-secondary);
+		font-size: 0.9rem;
+	}
+
+	label {
+		display: grid;
+		gap: 0.4rem;
+		color: var(--color-primary);
+		font-size: 0.9rem;
+		font-weight: 700;
+	}
+
+	input,
+	textarea {
+		width: 100%;
+		padding: 0.75rem 0.9rem;
+		border: 1px solid var(--color-border-muted);
+		border-radius: 5px;
+		background-color: var(--color-white);
+		color: var(--color-primary);
+		font-family: var(--font-body);
+		font-size: 1rem;
+	}
+
+	input:focus-visible,
+	textarea:focus-visible {
+		outline: 2px solid var(--color-brand-green);
+		outline-offset: 2px;
+	}
+
+	.form .btn-primary {
+		justify-self: start;
+		border: 0;
+		cursor: pointer;
+	}
+
+	.map iframe {
+		display: block;
+		width: 100%;
+		height: 350px;
+		border: 0;
+	}
+
+	@media (min-width: 64rem) {
+		.inner {
+			grid-template-columns: 1fr 1fr;
+			align-items: start;
+			gap: var(--space-12);
+		}
+	}
+</style>
