@@ -1,6 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 import tecidosNobres from '../assets/images/home/benefits/tecidos-nobres.webp';
+import site from '../data/site.json';
+
+const whatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappDefaultMessage)}`;
 
 const cards = [
 	{
@@ -29,9 +32,9 @@ const cards = [
 
 <section class="benefits" aria-labelledby="benefits-heading">
 	<div class="inner">
-		<p class="eyebrow">benefícios</p>
 		<h2 id="benefits-heading">
-			Por que escolher a <span class="text-gradient-red">Sartoria Via Italy</span>
+			<span class="heading-kicker">Por que escolher a</span>
+			<span class="heading-brand text-gradient-red">Sartoria Via Italy</span>
 		</h2>
 		<ul class="grid">
 			{
@@ -53,27 +56,28 @@ const cards = [
 							}
 							<span class="icon" aria-hidden="true">
 								{card.icon === 'medal' && (
-									<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-										<circle cx="12" cy="9" r="5.5"></circle>
-										<path d="M8.2 14.2 6 21l6-2.4L18 21l-2.2-6.8"></path>
-										<circle cx="12" cy="9" r="2"></circle>
+									<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="currentColor">
+										<path d="M7.2 14.4 5 21.2l7-2.3 7 2.3-2.2-6.8A6.7 6.7 0 0 1 12 16a6.7 6.7 0 0 1-4.8-1.6Z"></path>
+										<circle cx="12" cy="9" r="6.2"></circle>
+										<path fill="var(--color-white)" d="M12 5.4 13.1 8l2.8.3-2.1 1.9.6 2.7L12 11.6 9.6 12.9l.6-2.7-2.1-1.9 2.8-.3L12 5.4Z"></path>
 									</svg>
 								)}
 								{card.icon === 'diamond' && (
-									<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-										<path d="M3.5 9.5 12 3l8.5 6.5L12 21 3.5 9.5Z"></path>
-										<path d="M3.5 9.5h17"></path>
-										<path d="m8 9.5 4 11.5 4-11.5"></path>
-										<path d="M8 9.5 12 3l4 6.5"></path>
+									<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+										<path d="M3.6 9.4 12 3.2l8.4 6.2L12 21 3.6 9.4Z"></path>
+										<path d="M3.6 9.4h16.8"></path>
+										<path d="m8 9.4 4 11.6 4-11.6"></path>
+										<path d="M8 9.4 12 3.2l4 6.2"></path>
 									</svg>
 								)}
 								{card.icon === 'scissors' && (
-									<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-										<circle cx="6" cy="7" r="2.5"></circle>
-										<circle cx="6" cy="17" r="2.5"></circle>
-										<path d="m8.2 8.6 11.3-5.1"></path>
-										<path d="m8.2 15.4 11.3 5.1"></path>
-										<path d="M8 12h4"></path>
+									<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+										<circle cx="6" cy="6.2" r="2.6"></circle>
+										<circle cx="6" cy="17.8" r="2.6"></circle>
+										<path d="m8.4 8 11.4-4.6"></path>
+										<path d="m8.4 16 11.4 4.6"></path>
+										<path d="M14.2 12 8.2 8.2"></path>
+										<path d="m14.2 12-6 3.8"></path>
 									</svg>
 								)}
 							</span>
@@ -85,6 +89,17 @@ const cards = [
 				))
 			}
 		</ul>
+		<div class="cta">
+			<a
+				class="btn-primary"
+				href={whatsappHref}
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="Realizar orçamento (abre o WhatsApp em nova aba)"
+			>
+				Realizar orçamento
+			</a>
+		</div>
 	</div>
 </section>
 
@@ -99,43 +114,54 @@ const cards = [
 		margin-inline: auto;
 	}
 
-	.eyebrow {
-		margin: 0 0 var(--space-3);
-		color: var(--color-border-muted);
-		font-family: var(--font-body);
-		font-size: 14px;
-		font-weight: 700;
-		letter-spacing: 3px;
+	h2 {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		max-width: none;
+		margin: 0 0 var(--space-8);
+		text-align: center;
 		text-transform: uppercase;
+		line-height: 1.05;
 	}
 
-	h2 {
-		max-width: 16ch;
-		margin: 0 0 var(--space-8);
+	.heading-kicker {
+		color: var(--color-primary);
+		font-size: 0.72em;
+		letter-spacing: 0.04em;
+	}
+
+	.heading-brand {
+		font-size: 1em;
+		letter-spacing: 0.02em;
 	}
 
 	.grid {
 		display: grid;
-		gap: var(--space-6);
+		gap: var(--space-4);
 		margin: 0;
-		padding: 0;
+		padding: var(--space-6) var(--space-4);
 		list-style: none;
+		border: 1px solid color-mix(in srgb, var(--color-brand-green) 78%, white);
 	}
 
 	.card {
 		display: flex;
 		flex-direction: column;
+		align-items: center;
 		min-height: 100%;
 		padding: var(--space-8) var(--space-6);
-		border: 1px dotted var(--color-border-muted);
+		text-align: center;
 		background-color: var(--color-white);
 	}
 
 	.card-featured {
 		position: relative;
+		z-index: 1;
 		overflow: hidden;
 		color: var(--color-white);
-		background-color: var(--color-dark-navy);
+		background-color: var(--color-brand-green);
+		box-shadow: 0 18px 42px rgb(15 16 17 / 0.22);
 	}
 
 	.featured-photo,
@@ -148,15 +174,16 @@ const cards = [
 		height: 100%;
 		object-fit: cover;
 		object-position: center;
+		opacity: 0.38;
 	}
 
 	.card-featured::before {
 		position: absolute;
 		inset: 0;
 		z-index: 1;
-		background-color: var(--color-accent-red-start);
+		background-color: var(--color-brand-green);
 		content: '';
-		opacity: 0.82;
+		opacity: 0.68;
 		pointer-events: none;
 	}
 
@@ -168,7 +195,7 @@ const cards = [
 	.icon {
 		display: inline-flex;
 		margin-bottom: var(--space-4);
-		color: var(--color-primary);
+		color: var(--color-brand-green);
 	}
 
 	.card-featured .icon {
@@ -178,7 +205,7 @@ const cards = [
 	h3 {
 		margin: 0 0 var(--space-3);
 		font-family: var(--font-display);
-		font-size: 1.5rem;
+		font-size: 1.55rem;
 		line-height: 1.2;
 		color: var(--color-primary);
 	}
@@ -191,7 +218,7 @@ const cards = [
 		flex: 1 1 auto;
 		margin: 0 0 var(--space-6);
 		color: var(--color-secondary);
-		line-height: 1.6;
+		line-height: 1.65;
 	}
 
 	.card-featured p {
@@ -199,8 +226,7 @@ const cards = [
 	}
 
 	.card a {
-		align-self: flex-start;
-		color: inherit;
+		color: var(--color-brand-green);
 		font-family: var(--font-body);
 		font-size: 0.8rem;
 		font-weight: 700;
@@ -214,17 +240,35 @@ const cards = [
 	}
 
 	.card a:hover {
-		color: var(--color-brand-green);
+		color: var(--color-accent-red-start);
 	}
 
 	.card-featured a:hover {
 		color: var(--color-cream);
 	}
 
+	.cta {
+		display: flex;
+		justify-content: center;
+		margin-top: var(--space-8);
+	}
+
+	.cta .btn-primary {
+		min-width: 18rem;
+		text-align: center;
+	}
+
 	@media (min-width: 64rem) {
 		.grid {
 			grid-template-columns: repeat(3, 1fr);
-			align-items: stretch;
+			align-items: center;
+			gap: 0;
+			padding: 2.75rem 1rem;
+		}
+
+		.card-featured {
+			margin-block: -3.4rem;
+			min-height: calc(100% + 6.8rem);
 		}
 	}
 </style>

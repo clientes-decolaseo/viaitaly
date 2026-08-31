@@ -11,8 +11,6 @@ function isCurrentPage(href: string) {
 	if (normalizedHref === '/') return currentPath === '/';
 	return currentPath === normalizedHref || currentPath.startsWith(`${normalizedHref}/`);
 }
-
-const isBlogSection = currentPath === '/blog' || currentPath.startsWith('/blog/');
 ---
 
 <header>
@@ -50,53 +48,8 @@ const isBlogSection = currentPath === '/blog' || currentPath.startsWith('/blog/'
 							{cluster.pillar.label}
 						</a>
 					</li>
-					<li class="has-submenu">
-						<a
-							class="parent-link"
-							href="/blog/"
-							aria-current={isCurrentPage('/blog/') ? 'page' : undefined}
-							aria-haspopup="true"
-						>
-							Blog
-							<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
-								<path d="M2.2 4.2a.75.75 0 0 1 1.06 0L6 6.94l2.74-2.74a.75.75 0 0 1 1.06 1.06l-3.27 3.27a.75.75 0 0 1-1.06 0L2.2 5.26a.75.75 0 0 1 0-1.06z"></path>
-							</svg>
-						</a>
-						<ul class="submenu submenu-flyout">
-							{
-								cluster.articles.map((item) => (
-									<li>
-										<a href={item.href} aria-current={isCurrentPage(item.href) ? 'page' : undefined}>
-											{item.label}
-										</a>
-									</li>
-								))
-							}
-						</ul>
-						<details class="submenu-disclosure" open={isBlogSection}>
-							<summary>
-								Blog
-								<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
-									<path d="M2.2 4.2a.75.75 0 0 1 1.06 0L6 6.94l2.74-2.74a.75.75 0 0 1 1.06 1.06l-3.27 3.27a.75.75 0 0 1-1.06 0L2.2 5.26a.75.75 0 0 1 0-1.06z"></path>
-								</svg>
-							</summary>
-							<ul class="submenu">
-								<li>
-									<a href="/blog/" aria-current={isCurrentPage('/blog/') ? 'page' : undefined}>
-										Todos os artigos
-									</a>
-								</li>
-								{
-									cluster.articles.map((item) => (
-										<li>
-											<a href={item.href} aria-current={isCurrentPage(item.href) ? 'page' : undefined}>
-												{item.label}
-											</a>
-										</li>
-									))
-								}
-							</ul>
-						</details>
+					<li>
+						<a href="/blog/" aria-current={isCurrentPage('/blog/') ? 'page' : undefined}>Blog</a>
 					</li>
 					<li>
 						<a href="/#contato">Contato</a>
@@ -221,8 +174,7 @@ const isBlogSection = currentPath === '/blog' || currentPath.startsWith('/blog/'
 		list-style: none;
 	}
 
-	nav a,
-	.submenu-disclosure summary {
+	nav a {
 		display: block;
 		padding: 0.7rem 0.35rem;
 		color: var(--color-cream);
@@ -234,41 +186,8 @@ const isBlogSection = currentPath === '/blog' || currentPath.startsWith('/blog/'
 		text-decoration: none;
 	}
 
-	.parent-link,
-	.submenu-flyout {
-		display: none;
-	}
-
-	.submenu-disclosure summary {
-		display: flex;
-		align-items: center;
-		gap: var(--space-1);
-		cursor: pointer;
-		list-style: none;
-	}
-
-	.submenu-disclosure summary::-webkit-details-marker {
-		display: none;
-	}
-
-	.submenu {
-		display: flex;
-		flex-direction: column;
-		margin: 0;
-		padding: 0 0 0 var(--space-4);
-		list-style: none;
-	}
-
-	.submenu a {
-		text-transform: none;
-		letter-spacing: 0.2px;
-		font-size: 13px;
-	}
-
 	nav a:hover,
-	nav a[aria-current='page'],
-	.submenu-disclosure summary:hover,
-	.submenu-disclosure[open] summary {
+	nav a[aria-current='page'] {
 		color: var(--color-brand-green);
 	}
 
@@ -316,44 +235,6 @@ const isBlogSection = currentPath === '/blog' || currentPath.startsWith('/blog/'
 			flex-direction: row;
 			align-items: center;
 			gap: 1.35rem;
-		}
-
-		.has-submenu {
-			position: relative;
-		}
-
-		.submenu-disclosure {
-			display: none;
-		}
-
-		.parent-link {
-			display: inline-flex;
-			align-items: center;
-			gap: 0.3rem;
-		}
-
-		.submenu-flyout {
-			display: none;
-			position: absolute;
-			top: 100%;
-			left: 50%;
-			min-width: 18rem;
-			padding: 0.6rem 0;
-			border: 1px solid rgb(228 227 221 / 0.12);
-			background-color: rgb(6 22 24 / 0.96);
-			box-shadow: 0 12px 32px rgb(0 0 0 / 0.28);
-			list-style: none;
-			transform: translateX(-50%);
-		}
-
-		.has-submenu:hover .submenu-flyout,
-		.has-submenu:focus-within .submenu-flyout {
-			display: flex;
-			flex-direction: column;
-		}
-
-		.submenu-flyout a {
-			padding: 0.55rem 1.1rem;
 		}
 
 		.phone {

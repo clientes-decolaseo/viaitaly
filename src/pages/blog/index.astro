@@ -1,0 +1,278 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import { getBlogCover } from '../../data/blog-covers';
+import site from '../../data/site.json';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog', ({ data }) => data.draft !== true)).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+
+const whatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappDefaultMessage)}`;
+
+const title = 'Blog — Alfaiataria Bespoke | Sartoria Via Italy';
+const description =
+	'Artigos sobre terno sob medida, bespoke full canvas, tecidos italianos e o processo da Sartoria Via Italy em São Paulo.';
+const canonical = '/blog/';
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'Blog',
+	name: 'Blog da Sartoria Via Italy',
+	description,
+	url: 'https://viaitaly.com.br/blog/',
+	blogPost: posts.map((post) => ({
+		'@type': 'BlogPosting',
+		headline: post.data.title,
+		description: post.data.description,
+		url: `https://viaitaly.com.br/blog/${post.id}/`,
+		datePublished: post.data.pubDate.toISOString(),
+	})),
+};
+
+function formatDate(date: Date) {
+	return date.toLocaleDateString('pt-BR', {
+		day: '2-digit',
+		month: 'long',
+		year: 'numeric',
+	});
+}
+---
+
+<BaseLayout {title} {description} {canonical} {schema}>
+	<section class="blog" aria-labelledby="blog-heading">
+		<div class="inner">
+			<nav class="breadcrumb" aria-label="Trilha de navegação">
+				<ol>
+					<li><a href="/">Início</a></li>
+					<li><span aria-current="page">Blog</span></li>
+				</ol>
+			</nav>
+
+			<header class="intro">
+				<h1 id="blog-heading">Blog</h1>
+				<p>
+					Guias e artigos sobre alfaiataria bespoke, tecidos europeus e o processo de um terno
+					feito sob medida em São Paulo.
+				</p>
+			</header>
+
+			<ul class="grid">
+				{
+					posts.map((post) => {
+						const cover = getBlogCover(post.id);
+						return (
+							<li>
+								<article class="card">
+									<a class="media" href={`/blog/${post.id}/`} aria-hidden="true" tabindex="-1">
+										<Image
+											src={cover.src}
+											alt={cover.alt}
+											widths={[400, 640, 960]}
+											sizes="(min-width: 64rem) 50vw, 100vw"
+											format="webp"
+											quality="mid"
+										/>
+									</a>
+									<div class="copy">
+										<time datetime={post.data.pubDate.toISOString()}>
+											{formatDate(post.data.pubDate)}
+										</time>
+										<h2>
+											<a href={`/blog/${post.id}/`}>{post.data.h1}</a>
+										</h2>
+										<p>{post.data.description}</p>
+										<a class="read" href={`/blog/${post.id}/`}>
+											Leia mais
+										</a>
+									</div>
+								</article>
+							</li>
+						);
+					})
+				}
+			</ul>
+
+			<div class="cta">
+				<a
+					class="btn-primary"
+					href={whatsappHref}
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Realizar orçamento (abre o WhatsApp em nova aba)"
+				>
+					Realizar orçamento
+				</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.blog {
+		padding: var(--space-12) var(--space-4) 4.5rem;
+		background-color: var(--color-white);
+	}
+
+	.inner {
+		max-width: var(--max-width);
+		margin-inline: auto;
+	}
+
+	.breadcrumb ol {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-2);
+		margin: 0 0 var(--space-8);
+		padding: 0;
+		list-style: none;
+		font-size: 0.8rem;
+		color: var(--color-ink-soft);
+	}
+
+	.breadcrumb li:not(:last-child)::after {
+		content: '/';
+		margin-left: var(--space-2);
+		color: var(--color-border);
+	}
+
+	.breadcrumb a {
+		color: var(--color-navy);
+		text-decoration: none;
+	}
+
+	.breadcrumb a:hover {
+		color: var(--color-brand-green);
+		text-decoration: underline;
+	}
+
+	.intro {
+		max-width: 38rem;
+		margin: 0 auto var(--space-12);
+		text-align: center;
+	}
+
+	h1 {
+		margin: 0 0 var(--space-4);
+		font-family: var(--font-display);
+		font-size: clamp(2.4rem, 6vw, 4.5rem);
+		line-height: 1.05;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		color: var(--color-primary);
+	}
+
+	.intro p {
+		margin: 0;
+		color: var(--color-secondary);
+		line-height: 1.7;
+	}
+
+	.grid {
+		display: grid;
+		gap: var(--space-8);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.card {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		background-color: var(--color-white);
+	}
+
+	.media {
+		display: block;
+		overflow: hidden;
+		aspect-ratio: 16 / 10;
+		background-color: var(--color-dark-navy);
+	}
+
+	.media :global(img) {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		transition: transform 0.4s ease;
+	}
+
+	.card:hover .media :global(img) {
+		transform: scale(1.04);
+	}
+
+	.copy {
+		display: flex;
+		flex-direction: column;
+		flex: 1 1 auto;
+		padding: var(--space-6) 0 0;
+	}
+
+	time {
+		margin: 0 0 var(--space-2);
+		color: var(--color-brand-green);
+		font-family: var(--font-body);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	h2 {
+		margin: 0 0 var(--space-3);
+		font-family: var(--font-display);
+		font-size: 1.55rem;
+		line-height: 1.25;
+	}
+
+	h2 a {
+		color: var(--color-primary);
+		text-decoration: none;
+	}
+
+	h2 a:hover {
+		color: var(--color-brand-green);
+	}
+
+	.copy p {
+		flex: 1 1 auto;
+		margin: 0 0 var(--space-4);
+		color: var(--color-secondary);
+		line-height: 1.65;
+	}
+
+	.read {
+		color: var(--color-brand-green);
+		font-family: var(--font-body);
+		font-size: 0.8rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		text-underline-offset: 0.28em;
+	}
+
+	.read:hover {
+		color: var(--color-accent-red-start);
+	}
+
+	.cta {
+		display: flex;
+		justify-content: center;
+		margin-top: var(--space-12);
+	}
+
+	.cta .btn-primary {
+		min-width: 18rem;
+		text-align: center;
+	}
+
+	@media (min-width: 64rem) {
+		.grid {
+			grid-template-columns: 1fr 1fr;
+			gap: var(--space-12) var(--space-8);
+		}
+	}
+</style>

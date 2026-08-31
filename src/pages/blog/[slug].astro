@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import { getBlogCover } from '../../data/blog-covers';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 export async function getStaticPaths() {
@@ -18,10 +20,9 @@ interface Props {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-const { title, description, h1, author, pubDate, updatedDate, pillarSlug } = post.data;
-
+const { title, description, h1, author, pubDate, updatedDate } = post.data;
+const cover = getBlogCover(post.id);
 const canonical = `/blog/${post.id}/`;
-const pillarHref = `/${pillarSlug.replace(/^\/|\/$/g, '')}/`;
 
 const schema = {
 	'@context': 'https://schema.org',
@@ -47,11 +48,17 @@ const schema = {
 		{ href: '/blog/', label: 'Blog' },
 		{ label: h1 },
 	]}
-	pillar={{
-		href: pillarHref,
-		title: 'terno sob medida em São Paulo',
-	}}
 >
 	<h1>{h1}</h1>
+	<figure class="cover">
+		<Image
+			src={cover.src}
+			alt={cover.alt}
+			widths={[640, 960, 1280]}
+			sizes="(min-width: 46rem) 46rem, 100vw"
+			format="webp"
+			quality="mid"
+		/>
+	</figure>
 	<Content />
 </ArticleLayout>
