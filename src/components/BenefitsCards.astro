@@ -1,274 +1,189 @@
 ---
-import { Image } from 'astro:assets';
-import tecidosNobres from '../assets/images/home/benefits/tecidos-nobres.webp';
-import site from '../data/site.json';
-
-const whatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappDefaultMessage)}`;
-
 const cards = [
 	{
-		title: 'Tradição e Excelência',
-		text: 'Mais de 12 anos dedicados à alfaiataria masculina de alto padrão. Nossa experiência se reflete em cada corte, prova e acabamento.',
-		href: '/sobre/',
-		icon: 'medal',
+		title: 'Antes de tudo, ouvimos você. Seu momento, história, e perfil.',
+		text: 'A ocasião, o ambiente, a estação, o estilo de vida, tudo o que molda o contexto do traje. Cada escolha nasce do entendimento profundo do que o seu momento exige.',
+		icon: 'message',
 		featured: false,
 	},
 	{
-		title: 'Tecidos Nobres e Exclusivos',
-		text: 'Utilizamos apenas lanifícios premiados na Europa: Drago, Zegna, Loro Piana, entre outros. Cada tecido conta uma história de elegância.',
-		href: '/blog/tecidos-nobres-drago-zegna-loro-piana/',
-		icon: 'diamond',
+		title: 'Matéria-prima, as melhores do mundo.',
+		text: 'Apresentamos os tecidos mais nobres do mundo: lanifícios premiados, forros selecionados, aviamentos de precisão. Tons, texturas e combinações são decididos lado a lado.',
+		icon: 'layers',
 		featured: true,
 	},
 	{
-		title: 'Bespoke, de Verdade',
-		text: 'Todas as peças são feitas uma a uma, 100% bespoke. Atendimento personalizado, com discrição, pontualidade e atenção aos mínimos detalhes.',
-		href: '/blog/como-funciona-processo-bespoke/',
-		icon: 'scissors',
+		title: 'Medidas exatas, caimento insuperável.',
+		text: 'Cada medição é detalhada. Observamos postura, proporção, ritmo de movimento. Cada centímetro define o desenho final, cada medida prepara o caimento perfeito.',
+		icon: 'ruler',
+		featured: false,
+	},
+	{
+		title: 'Últimos detalhes, prova após prova.',
+		text: 'Onde o traje é moldado no corpo, pelo menos em 4 provas. Manipulamos o tecido, eliminando sobras e rugas. Linhas refinadas, prova após prova, até a perfeição.',
+		icon: 'sparkles',
 		featured: false,
 	},
 ] as const;
 ---
 
-<section class="benefits" aria-labelledby="benefits-heading">
-	<div class="inner">
-		<h2 id="benefits-heading">
-			<span class="heading-kicker">Por que escolher a</span>
-			<span class="heading-brand text-gradient-red">Sartoria Via Italy</span>
+<section class="why-details" aria-labelledby="benefits-heading">
+	<div class="why-details-inner">
+		<h2 id="benefits-heading" class="why-details-title">
+			Pensado nos mínimos detalhes para você se vestir perfeitamente.
 		</h2>
-		<ul class="grid">
+		<ul class="why-details-grid">
 			{
 				cards.map((card) => (
 					<li>
-						<article class:list={['card', card.featured && 'card-featured']}>
-							{
-								card.featured && (
-									<Image
-										class="featured-photo"
-										src={tecidosNobres}
-										alt="Alfaiate apresentando tecidos nobres a um cliente no ateliê"
-										widths={[480, 768, 1024]}
-										sizes="(min-width: 64rem) 33vw, 100vw"
-										format="webp"
-										quality="mid"
-									/>
-								)
-							}
-							<span class="icon" aria-hidden="true">
-								{card.icon === 'medal' && (
-									<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="currentColor">
-										<path d="M7.2 14.4 5 21.2l7-2.3 7 2.3-2.2-6.8A6.7 6.7 0 0 1 12 16a6.7 6.7 0 0 1-4.8-1.6Z"></path>
-										<circle cx="12" cy="9" r="6.2"></circle>
-										<path fill="var(--color-white)" d="M12 5.4 13.1 8l2.8.3-2.1 1.9.6 2.7L12 11.6 9.6 12.9l.6-2.7-2.1-1.9 2.8-.3L12 5.4Z"></path>
+						<article class:list={['why-details-card', card.featured && 'is-featured']}>
+							<span class="why-details-icon" aria-hidden="true">
+								{card.icon === 'message' && (
+									<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+										<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+										<circle cx="8.2" cy="12" r="0.9" fill="currentColor" stroke="none"></circle>
+										<circle cx="12" cy="12" r="0.9" fill="currentColor" stroke="none"></circle>
+										<circle cx="15.8" cy="12" r="0.9" fill="currentColor" stroke="none"></circle>
 									</svg>
 								)}
-								{card.icon === 'diamond' && (
-									<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-										<path d="M3.6 9.4 12 3.2l8.4 6.2L12 21 3.6 9.4Z"></path>
-										<path d="M3.6 9.4h16.8"></path>
-										<path d="m8 9.4 4 11.6 4-11.6"></path>
-										<path d="M8 9.4 12 3.2l4 6.2"></path>
+								{card.icon === 'layers' && (
+									<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+										<path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.91a1 1 0 0 0 0-1.83z"></path>
+										<path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path>
+										<path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path>
 									</svg>
 								)}
-								{card.icon === 'scissors' && (
-									<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-										<circle cx="6" cy="6.2" r="2.6"></circle>
-										<circle cx="6" cy="17.8" r="2.6"></circle>
-										<path d="m8.4 8 11.4-4.6"></path>
-										<path d="m8.4 16 11.4 4.6"></path>
-										<path d="M14.2 12 8.2 8.2"></path>
-										<path d="m14.2 12-6 3.8"></path>
+								{card.icon === 'ruler' && (
+									<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+										<circle cx="7.5" cy="16" r="4.2"></circle>
+										<circle cx="7.5" cy="16" r="1.4"></circle>
+										<path d="m11 13.4 9.2-6.6"></path>
+										<path d="M20.2 6.8h-3.4"></path>
+										<path d="m14.2 11.2.8.6"></path>
+										<path d="m16.4 9.6.8.6"></path>
+									</svg>
+								)}
+								{card.icon === 'sparkles' && (
+									<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="currentColor">
+										<path d="M8.2 3.2 9.1 7l3.8.9-3.8.9-.9 3.8-.9-3.8-3.8-.9 3.8-.9 .9-3.8Z"></path>
+										<path d="M17.2 2.6 17.8 5l2.4.6-2.4.6-.6 2.4-.6-2.4-2.4-.6 2.4-.6 .6-2.4Z"></path>
+										<path d="M18 11.4 18.8 14.2 21.6 15 18.8 15.8 18 18.6 17.2 15.8 14.4 15 17.2 14.2 18 11.4Z"></path>
 									</svg>
 								)}
 							</span>
 							<h3>{card.title}</h3>
 							<p>{card.text}</p>
-							<a href={card.href}>Saiba mais</a>
 						</article>
 					</li>
 				))
 			}
 		</ul>
-		<div class="cta">
-			<a
-				class="btn-primary"
-				href={whatsappHref}
-				target="_blank"
-				rel="noopener noreferrer"
-				aria-label="Realizar orçamento (abre o WhatsApp em nova aba)"
-			>
-				Realizar orçamento
-			</a>
-		</div>
 	</div>
 </section>
 
-<style>
-	.benefits {
+<style is:inline>
+	.why-details {
 		padding: var(--space-12) var(--space-4);
 		background-color: var(--color-white);
 	}
 
-	.inner {
+	.why-details-inner {
 		max-width: var(--max-width);
 		margin-inline: auto;
 	}
 
-	h2 {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		max-width: none;
+	.why-details-title {
 		margin: 0 0 var(--space-8);
+		color: var(--color-primary);
+		font-family: var(--font-display);
+		font-size: clamp(1.2rem, 5.2vw, 1.85rem);
+		font-weight: 700;
+		letter-spacing: 0.02em;
+		line-height: 1.2;
 		text-align: center;
 		text-transform: uppercase;
-		line-height: 1.05;
+		text-wrap: balance;
 	}
 
-	.heading-kicker {
-		color: var(--color-primary);
-		font-size: 0.72em;
-		letter-spacing: 0.04em;
-	}
-
-	.heading-brand {
-		font-size: 1em;
-		letter-spacing: 0.02em;
-	}
-
-	.grid {
+	.why-details-grid {
 		display: grid;
-		gap: var(--space-4);
+		grid-template-columns: 1fr;
+		gap: 1.15rem;
 		margin: 0;
-		padding: var(--space-6) var(--space-4);
+		padding: 0;
 		list-style: none;
-		border: 1px solid color-mix(in srgb, var(--color-brand-green) 78%, white);
 	}
 
-	.card {
+	.why-details-card {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
+		align-items: flex-start;
 		min-height: 100%;
-		padding: var(--space-8) var(--space-6);
-		text-align: center;
-		background-color: var(--color-white);
+		padding: 1.6rem 1.35rem 1.75rem;
+		border: 1px solid #e4e4e4;
+		border-radius: 0.65rem;
+		background-color: #f6f6f6;
 	}
 
-	.card-featured {
-		position: relative;
-		z-index: 1;
-		overflow: hidden;
-		color: var(--color-white);
+	.why-details-card.is-featured {
+		border-color: var(--color-brand-green);
 		background-color: var(--color-brand-green);
-		box-shadow: 0 18px 42px rgb(15 16 17 / 0.22);
+		box-shadow: 0 16px 36px rgb(15 16 17 / 0.18);
 	}
 
-	.featured-photo,
-	.card-featured :global(picture),
-	.card-featured :global(img) {
-		position: absolute;
-		inset: 0;
-		z-index: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		object-position: center;
-		opacity: 0.38;
-	}
-
-	.card-featured::before {
-		position: absolute;
-		inset: 0;
-		z-index: 1;
-		background-color: var(--color-brand-green);
-		content: '';
-		opacity: 0.68;
-		pointer-events: none;
-	}
-
-	.card-featured > :not(.featured-photo) {
-		position: relative;
-		z-index: 2;
-	}
-
-	.icon {
+	.why-details-icon {
 		display: inline-flex;
-		margin-bottom: var(--space-4);
+		margin-bottom: 1.15rem;
 		color: var(--color-brand-green);
 	}
 
-	.card-featured .icon {
+	.why-details-card.is-featured .why-details-icon {
 		color: var(--color-white);
 	}
 
-	h3 {
-		margin: 0 0 var(--space-3);
-		font-family: var(--font-display);
-		font-size: 1.55rem;
-		line-height: 1.2;
-		color: var(--color-primary);
-	}
-
-	.card-featured h3 {
-		color: var(--color-white);
-	}
-
-	.card p {
-		flex: 1 1 auto;
-		margin: 0 0 var(--space-6);
-		color: var(--color-secondary);
-		line-height: 1.65;
-	}
-
-	.card-featured p {
-		color: var(--color-white);
-	}
-
-	.card a {
+	.why-details-card h3 {
+		margin: 0 0 0.85rem;
 		color: var(--color-brand-green);
 		font-family: var(--font-body);
-		font-size: 0.8rem;
+		font-size: 1.05rem;
 		font-weight: 700;
-		letter-spacing: 0.14em;
-		text-transform: uppercase;
-		text-underline-offset: 0.28em;
+		line-height: 1.3;
 	}
 
-	.card-featured a {
+	.why-details-card.is-featured h3 {
 		color: var(--color-white);
 	}
 
-	.card a:hover {
-		color: var(--color-accent-red-start);
+	.why-details-card p {
+		margin: 0;
+		color: var(--color-secondary);
+		font-size: 0.92rem;
+		line-height: 1.55;
 	}
 
-	.card-featured a:hover {
-		color: var(--color-cream);
+	.why-details-card.is-featured p {
+		color: var(--color-white);
 	}
 
-	.cta {
-		display: flex;
-		justify-content: center;
-		margin-top: var(--space-8);
-	}
-
-	.cta .btn-primary {
-		min-width: 18rem;
-		text-align: center;
+	@media (min-width: 48rem) {
+		.why-details-grid {
+			grid-template-columns: repeat(2, 1fr);
+			align-items: stretch;
+		}
 	}
 
 	@media (min-width: 64rem) {
-		.grid {
-			grid-template-columns: repeat(3, 1fr);
-			align-items: center;
-			gap: 0;
-			padding: 2.75rem 1rem;
+		.why-details-title {
+			white-space: nowrap;
+			font-size: clamp(1.15rem, 2.2vw, 1.85rem);
 		}
 
-		.card-featured {
-			margin-block: -3.4rem;
-			min-height: calc(100% + 6.8rem);
+		.why-details-grid {
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		.why-details-card {
+			padding: 1.75rem 1.2rem 1.85rem;
 		}
 	}
 </style>

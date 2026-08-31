@@ -4,125 +4,229 @@ import sobreFoto from '../assets/images/home/sobre-foto.jpeg';
 
 const valores = [
 	{
-		title: 'Tradição e Excelência',
-		text: 'Mais de 12 anos dedicados à alfaiataria masculina de alto padrão. Nossa experiência se reflete em cada corte, prova e acabamento.',
+		title: 'Excelência da Tradição Italiana',
+		text: 'Décadas de experiência, melhores matérias-primas do mundo, tudo feito apenas de lanifícios premiados na Europa.',
 	},
 	{
 		title: 'Exclusividade',
-		text: 'Todas as peças são feitas uma a uma, 100% bespoke. Atendimento personalizado, com discrição, pontualidade e atenção aos mínimos detalhes.',
+		text: 'Apenas para você, feito uma por uma, tudo sob medida.',
 	},
 	{
 		title: 'Atendimento Personalizado',
-		text: 'O atendimento é sempre feito com hora marcada. Essa escolha existe para garantir a atenção devida a cada cliente, sem pressa e sem sobreposição de agendas. O atendimento pode ser realizado no ateliê da Sartoria Via Italy ou no endereço de escolha do cliente.',
+		text: 'Pensamos nos mínimos detalhes, para te atender com discrição, pontualidade e atenção máxima.',
 	},
 ];
 ---
 
-<section class="about" aria-labelledby="about-heading">
-	<div class="inner">
-		<h2 id="about-heading">
-			<span>Muito Prazer, </span>
-			<span class="text-gradient-red">Sartoria Via Italy.</span>
-		</h2>
-		<ul class="values">
-			{
-				valores.map((valor) => (
-					<li>
-						<h3>{valor.title}</h3>
-						<p>{valor.text}</p>
-					</li>
-				))
-			}
-		</ul>
-		<div class="showcase">
-			<div class="media">
-				<Image
-					class="photo"
-					src={sobreFoto}
-					alt="Sergio Saturnino, fundador da Sartoria Via Italy"
-					widths={[480, 768, 1024, 1280]}
-					sizes="(min-width: 64rem) 50vw, 100vw"
-					format="webp"
-					quality="mid"
-				/>
-				<ul class="stats">
-					<li>
-						<strong>27+</strong>
-						<span>Anos de experiência</span>
-					</li>
-					<li>
-						<strong>1397+</strong>
-						<span>Clientes</span>
-					</li>
-				</ul>
+<section class="intro-about" aria-labelledby="about-heading">
+	<div class="intro-about-inner">
+		<div class="intro-about-copy">
+			<div class="intro-about-top">
+				<h2 id="about-heading">Muito Prazer, Sartoria Via Italy.</h2>
+				<div class="intro-about-brand">
+					<svg
+						class="intro-about-flag"
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 33 22"
+						width="33"
+						height="22"
+						aria-hidden="true"
+						focusable="false"
+					>
+						<rect width="11" height="22" fill="#009246"></rect>
+						<rect x="11" width="11" height="22" fill="#fff"></rect>
+						<rect x="22" width="11" height="22" fill="#ce2b37"></rect>
+						<rect
+							x="0.4"
+							y="0.4"
+							width="32.2"
+							height="21.2"
+							fill="none"
+							stroke="#c8c8c8"
+							stroke-width="0.8"></rect>
+					</svg>
+					<p class="intro-about-wordmark">
+						<span class="intro-about-wordmark-name">VIA ITALY</span>
+						<span class="intro-about-wordmark-line">SARTORIA</span>
+					</p>
+				</div>
 			</div>
-			<a class="btn-primary" href="/sobre/">Conheça Sergio Saturnino</a>
+			<p class="intro-about-lead">
+				<a href="/sobre/">Conheça a alfaiataria.</a>
+			</p>
+			<ul class="intro-about-values">
+				{
+					valores.map((valor) => (
+						<li>
+							<h3>{valor.title}</h3>
+							<p>{valor.text}</p>
+						</li>
+					))
+				}
+			</ul>
+			<figure class="intro-about-quote">
+				<blockquote>
+					<p>“Cada terno conta uma história. Cada cliente é único.”</p>
+				</blockquote>
+				<figcaption>Sergio Saturnino</figcaption>
+			</figure>
+		</div>
+		<div class="intro-about-media">
+			<Image
+				src={sobreFoto}
+				alt="Sergio Saturnino, fundador da Sartoria Via Italy, de colete e paletó azul"
+				widths={[480, 768, 1024, 1280]}
+				sizes="(min-width: 64rem) 40vw, 100vw"
+				format="webp"
+				quality="mid"
+			/>
 		</div>
 	</div>
 </section>
 
-<style>
-	.about {
+<style is:inline>
+	.intro-about {
 		padding: var(--space-12) var(--space-4);
-		background-color: var(--color-dark-navy);
-		color: var(--color-cream);
+		scroll-margin-top: 6rem;
+		background-color: var(--color-white);
 	}
 
-	.inner {
+	.intro-about-inner {
 		display: grid;
+		grid-template-columns: 1fr;
 		gap: var(--space-8);
 		max-width: var(--max-width);
 		margin-inline: auto;
+		align-items: center;
 	}
 
-	h2 {
+	.intro-about-top {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: 1rem 1.5rem;
+		margin-bottom: 1.75rem;
+	}
+
+	.intro-about-top h2 {
+		max-width: 14ch;
+		margin: 0;
+		padding-bottom: 0.7rem;
+		border-bottom: 2px solid var(--color-brand-green);
+		color: var(--color-primary);
+		font-family: var(--font-display);
+		font-size: clamp(1.85rem, 3.4vw, 2.65rem);
+		font-weight: 700;
+		letter-spacing: 0.02em;
+		line-height: 1.12;
+		text-transform: uppercase;
+	}
+
+	.intro-about-brand {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.45rem;
+	}
+
+	.intro-about-flag {
+		display: block;
+		width: 1.7rem;
+		height: auto;
+	}
+
+	.intro-about-wordmark {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 0.2rem;
 		margin: 0;
-		text-align: center;
-		color: var(--color-cream);
+		color: var(--color-primary);
+		font-family: var(--font-display);
+		font-weight: 700;
+		line-height: 1;
 	}
 
-	.values {
+	.intro-about-wordmark-name {
+		font-size: 1.05rem;
+		letter-spacing: 0.14em;
+	}
+
+	.intro-about-wordmark-line {
+		margin-top: 0.28rem;
+		font-size: 0.58rem;
+		letter-spacing: 0.34em;
+	}
+
+	.intro-about-lead {
+		margin: 0 0 1.75rem;
+	}
+
+	.intro-about-lead a {
+		color: #5a5a5a;
+		font-family: var(--font-body);
+		font-size: 1.15rem;
+		font-weight: 700;
+		text-decoration: none;
+	}
+
+	.intro-about-lead a:hover {
+		color: var(--color-brand-green);
+	}
+
+	.intro-about-values {
 		display: grid;
-		grid-template-columns: 1fr;
-		gap: var(--space-6);
-		margin: 0;
+		gap: 1.25rem;
+		margin: 0 0 2rem;
 		padding: 0;
 		list-style: none;
 	}
 
-	.values h3 {
-		margin: 0 0 0.65rem;
-		color: var(--color-brand-green);
-		font-family: var(--font-display);
-		font-size: 1.45rem;
+	.intro-about-values h3 {
+		margin: 0 0 0.35rem;
+		color: #4a4a4a;
+		font-family: var(--font-body);
+		font-size: 1rem;
 		font-weight: 700;
-		line-height: 1.2;
+		line-height: 1.3;
 	}
 
-	.values p {
+	.intro-about-values p {
 		margin: 0;
-		color: var(--color-cream);
+		color: #7a7a7a;
 		font-size: 0.95rem;
-		line-height: 1.6;
+		line-height: 1.55;
 	}
 
-	.showcase {
-		display: grid;
-		gap: var(--space-6);
-		justify-items: center;
+	.intro-about-quote {
+		margin: 0;
 	}
 
-	.media {
-		position: relative;
-		width: 100%;
+	.intro-about-quote blockquote {
+		margin: 0;
 	}
 
-	.photo,
-	.media :global(img) {
+	.intro-about-quote p {
+		margin: 0 0 0.45rem;
+		color: var(--color-brand-green);
+		font-family: var(--font-body);
+		font-size: 1.05rem;
+		font-weight: 700;
+		line-height: 1.45;
+	}
+
+	.intro-about-quote figcaption {
+		color: #7a7a7a;
+		font-size: 0.95rem;
+	}
+
+	.intro-about-media {
+		overflow: hidden;
+		border-radius: 1.75rem;
+		background-color: #ececec;
+	}
+
+	.intro-about-media img {
 		display: block;
 		width: 100%;
 		height: 100%;
@@ -131,51 +235,32 @@ const valores = [
 		object-position: center top;
 	}
 
-	.stats {
-		position: absolute;
-		right: var(--space-4);
-		bottom: var(--space-4);
-		display: grid;
-		gap: var(--space-3);
-		margin: 0;
-		padding: 0;
-		list-style: none;
-	}
-
-	.stats li {
-		display: grid;
-		min-width: 10.5rem;
-		padding: 0.85rem 1.1rem;
-		background-color: var(--color-brand-green);
-		color: var(--color-white);
-	}
-
-	.stats strong {
-		font-family: var(--font-display);
-		font-size: 2rem;
-		font-weight: 700;
-		line-height: 1.1;
-	}
-
-	.stats span {
-		font-family: var(--font-body);
-		font-size: 0.8rem;
-		font-weight: 700;
-		letter-spacing: 0.04em;
-		text-transform: uppercase;
-	}
-
 	@media (min-width: 48rem) {
-		.values {
-			grid-template-columns: repeat(3, 1fr);
-			gap: var(--space-6);
-			align-items: start;
+		.intro-about-top {
+			flex-direction: row;
+			align-items: flex-start;
+		}
+
+		.intro-about-brand {
+			align-items: center;
+			margin-left: auto;
 		}
 	}
 
 	@media (min-width: 64rem) {
-		.media :global(img) {
-			min-height: 28rem;
+		.intro-about-inner {
+			grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+			gap: 4rem;
+			align-items: center;
+		}
+
+		.intro-about-media {
+			align-self: stretch;
+		}
+
+		.intro-about-media img {
+			min-height: 100%;
+			aspect-ratio: 4 / 5;
 		}
 	}
 </style>
