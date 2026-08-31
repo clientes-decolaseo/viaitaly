@@ -1,0 +1,165 @@
+---
+import { Image } from 'astro:assets';
+import calcasImage from '../assets/images/home/products/calcas.jpeg';
+import costumesImage from '../assets/images/home/products/costumes.jpeg';
+import paletosImage from '../assets/images/home/products/paletos.png';
+import ternosImage from '../assets/images/home/products/ternos.jpeg';
+
+const photos = [
+	{
+		src: ternosImage,
+		alt: 'Terno sob medida em prova de alfaiataria, com alinhavos visíveis no paletó',
+	},
+	{
+		src: costumesImage,
+		alt: 'Costume sob medida em processo de ajuste no ateliê',
+	},
+	{
+		src: paletosImage,
+		alt: 'Paletó azul texturizado com camisa branca, ajuste do botão na cintura',
+	},
+	{
+		src: calcasImage,
+		alt: 'Calça sob medida em alfaiataria, detalhe de caimento e tecido',
+	},
+];
+
+const occasions = ['Casamento', 'Dia-a-dia', 'Viagem', 'Evento', 'Algum outro momento'] as const;
+---
+
+<section class="occasions" aria-labelledby="occasions-heading">
+	<div class="intro">
+		<h2 id="occasions-heading">
+			<span>Tudo Sob Medida, </span>
+			<span>uma Obra-Prima para Cada Ocasião</span>
+		</h2>
+	</div>
+	<ul class="gallery">
+		{
+			photos.map((photo) => (
+				<li>
+					<Image
+						src={photo.src}
+						alt={photo.alt}
+						widths={[400, 640, 960, 1280]}
+						sizes="(min-width: 64rem) 25vw, 50vw"
+						format="webp"
+						quality="mid"
+					/>
+				</li>
+			))
+		}
+	</ul>
+	<div class="footer">
+		<p>O melhor para o seu momento, feito apenas para você.</p>
+		{/* TODO: filtro real por ocasião é fase futura — as pills são apenas visuais nesta etapa. */}
+		<ul class="pills" aria-label="Ocasiões">
+			{
+				occasions.map((occasion) => (
+					<li>
+						<span class="pill">{occasion}</span>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
+
+<style>
+	.occasions {
+		background-color: var(--color-white);
+	}
+
+	.intro {
+		max-width: var(--max-width);
+		margin-inline: auto;
+		padding: var(--space-12) var(--space-4) var(--space-8);
+	}
+
+	h2 {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 0;
+		text-align: center;
+		line-height: 1.12;
+	}
+
+	.gallery {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 0;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.gallery li {
+		position: relative;
+		min-height: 14rem;
+		aspect-ratio: 3 / 4;
+		overflow: hidden;
+	}
+
+	.gallery :global(img) {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		max-width: none;
+		object-fit: cover;
+		object-position: center 20%;
+	}
+
+	.footer {
+		max-width: var(--max-width);
+		margin-inline: auto;
+		padding: var(--space-8) var(--space-4) var(--space-12);
+		text-align: center;
+	}
+
+	.footer > p {
+		margin: 0 0 var(--space-6);
+		color: var(--color-secondary);
+		font-size: 1.05rem;
+	}
+
+	.pills {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 0.65rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.pill {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.55rem 1.15rem;
+		border: 1px solid var(--color-border-muted);
+		border-radius: 999px;
+		background-color: var(--color-white);
+		color: var(--color-primary);
+		font-family: var(--font-body);
+		font-size: 0.92rem;
+		font-weight: 500;
+		line-height: 1.2;
+		cursor: default;
+		user-select: none;
+	}
+
+	@media (min-width: 64rem) {
+		.gallery {
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		.gallery li {
+			min-height: 22rem;
+			aspect-ratio: 3 / 4;
+		}
+	}
+</style>

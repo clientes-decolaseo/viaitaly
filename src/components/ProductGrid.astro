@@ -42,7 +42,10 @@ const pecas = [
 
 <section class="products" aria-labelledby="products-heading">
 	<div class="inner">
-		<h2 id="products-heading">Esqueça o sob medida. Descubra o verdadeiro Bespoke Full Canvas.</h2>
+		<header class="intro">
+			<h2 id="products-heading">Clássicos que Nunca Cederam ao Tempo.</h2>
+			<p>Escolha sua próxima peça.</p>
+		</header>
 		<ul class="grid">
 			{
 				pecas.map((peca) => (
@@ -52,13 +55,12 @@ const pecas = [
 								<Image
 									src={peca.image}
 									alt={peca.alt}
-									widths={[400, 640, 960]}
-									sizes="(min-width: 80rem) 20vw, (min-width: 48rem) 50vw, 100vw"
+									widths={[640, 960, 1280]}
+									sizes="(min-width: 64rem) 50vw, 100vw"
 									format="webp"
 									quality="mid"
 								/>
 							</div>
-							<div class="overlay" aria-hidden="true"></div>
 							<div class="copy">
 								<h3>{peca.title}</h3>
 								<p>{peca.text}</p>
@@ -68,7 +70,6 @@ const pecas = [
 				))
 			}
 		</ul>
-		<p class="tagline">Sempre com ajuste perfeito, corte impecável e atendimento exclusivo.</p>
 	</div>
 </section>
 
@@ -83,14 +84,25 @@ const pecas = [
 		margin-inline: auto;
 	}
 
-	h2 {
-		max-width: 18ch;
-		margin: 0 auto var(--space-8);
+	.intro {
+		margin: 0 0 var(--space-8);
 		text-align: center;
+	}
+
+	h2 {
+		max-width: 16ch;
+		margin: 0 auto 0.75rem;
+	}
+
+	.intro p {
+		margin: 0;
+		color: var(--color-secondary);
+		font-size: 1.05rem;
 	}
 
 	.grid {
 		display: grid;
+		grid-template-columns: 1fr;
 		gap: var(--space-4);
 		margin: 0;
 		padding: 0;
@@ -102,9 +114,7 @@ const pecas = [
 		display: flex;
 		min-height: 22rem;
 		overflow: hidden;
-		border: 1px dashed rgb(228 227 221 / 0.45);
 		background-color: var(--color-dark-navy);
-		transition: border-color 0.3s;
 	}
 
 	.media,
@@ -114,75 +124,81 @@ const pecas = [
 		z-index: 0;
 		width: 100%;
 		height: 100%;
+		max-width: none;
 		object-fit: cover;
 		object-position: center;
 	}
 
-	.overlay {
-		position: absolute;
-		inset: 0;
-		z-index: 1;
-		background-color: rgb(0 0 0 / 0.45);
-		transition: background-color 0.3s;
-		pointer-events: none;
-	}
-
-	.card:hover,
-	.card:focus-within {
-		border-color: var(--color-brand-green);
-	}
-
-	.card:hover .overlay,
-	.card:focus-within .overlay {
-		background-color: rgb(0 0 0 / 0.72);
-	}
-
 	.copy {
 		position: relative;
-		z-index: 2;
+		z-index: 1;
 		display: flex;
 		flex-direction: column;
+		align-items: flex-start;
 		justify-content: flex-end;
-		gap: var(--space-2);
-		padding: var(--space-6);
+		gap: 0.55rem;
+		width: 100%;
+		padding: 1.35rem 1.5rem 1.5rem;
+		background: linear-gradient(180deg, transparent 35%, rgb(6 22 24 / 0.72) 100%);
 	}
 
 	h3 {
+		width: fit-content;
 		margin: 0;
+		padding: 0 0 0.35rem;
+		border-bottom: 2px solid var(--color-brand-green);
 		color: var(--color-white);
-		font-family: var(--font-body);
-		font-size: 22px;
+		font-family: var(--font-display);
+		font-size: 1.65rem;
 		font-weight: 700;
-		line-height: 1.2;
+		letter-spacing: 0.08em;
+		line-height: 1.1;
+		text-transform: uppercase;
 	}
 
 	.copy p {
+		max-width: 34ch;
 		margin: 0;
-		color: var(--color-cream);
-		font-size: 0.9rem;
-		line-height: 1.5;
+		color: rgb(228 227 221 / 0.82);
+		font-size: 0.82rem;
+		line-height: 1.45;
 	}
 
-	.tagline {
-		max-width: 36rem;
-		margin: var(--space-8) auto 0;
-		text-align: center;
-		color: var(--color-secondary);
-	}
-
-	@media (min-width: 48rem) {
+	@media (min-width: 64rem) {
 		.grid {
 			grid-template-columns: repeat(2, 1fr);
-		}
-	}
-
-	@media (min-width: 80rem) {
-		.grid {
-			grid-template-columns: repeat(5, 1fr);
+			gap: var(--space-6);
 		}
 
 		.card {
-			min-height: 26rem;
+			min-height: 600px;
+		}
+
+		.copy p {
+			max-height: 0;
+			opacity: 0;
+			overflow: hidden;
+			transform: translateY(0.4rem);
+			transition:
+				opacity 0.28s ease,
+				transform 0.28s ease,
+				max-height 0.28s ease;
+		}
+
+		.card:hover .copy p,
+		.card:focus-within .copy p {
+			max-height: 8rem;
+			opacity: 1;
+			transform: none;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.copy p {
+			max-height: none;
+			opacity: 1;
+			transform: none;
+			transition: none;
 		}
 	}
 </style>

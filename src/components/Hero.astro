@@ -1,24 +1,32 @@
 ---
 import { Image } from 'astro:assets';
-import heroImage from '../assets/images/home/hero.webp';
+import heroPhoto from '../assets/images/home/products/costumes.jpeg';
 
 const whatsappHref = `https://wa.me/5511996627391?text=${encodeURIComponent('Olá, vim pelo site!')}`;
 ---
 
 <section class="hero" aria-labelledby="hero-heading">
-	<Image
-		class="hero-image"
-		src={heroImage}
-		alt="Manequim masculino com paletó em ateliê de alfaiataria, ao lado de ferramentas de costura"
-		widths={[800, 1280, 1920, 2560]}
-		sizes="100vw"
-		format="webp"
-		quality="mid"
-		loading="eager"
-		fetchpriority="high"
-	/>
-	<div class="overlay" aria-hidden="true"></div>
-	<div class="inner">
+	<div class="copy">
+		<div class="brand">
+			<svg
+				class="flag"
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 33 22"
+				width="33"
+				height="22"
+				aria-hidden="true"
+				focusable="false"
+			>
+				<rect width="11" height="22" fill="#009246"></rect>
+				<rect x="11" width="11" height="22" fill="#fff"></rect>
+				<rect x="22" width="11" height="22" fill="#ce2b37"></rect>
+				<rect x="0.4" y="0.4" width="32.2" height="21.2" fill="none" stroke="#c8c8c8" stroke-width="0.8"></rect>
+			</svg>
+			<p class="wordmark">
+				<span class="wordmark-name">VIA ITALY</span>
+				<span class="wordmark-line">SARTORIA</span>
+			</p>
+		</div>
 		<h1 id="hero-heading">
 			Bespoke Full Canvas. A verdadeira alfaiataria italiana para homens que exigem excelência.
 		</h1>
@@ -36,62 +44,138 @@ const whatsappHref = `https://wa.me/5511996627391?text=${encodeURIComponent('Ol�
 			Realizar orçamento
 		</a>
 	</div>
+	<div class="media">
+		<Image
+			class="photo"
+			src={heroPhoto}
+			alt="Costume sob medida em processo de ajuste no ateliê"
+			widths={[640, 960, 1280, 1920]}
+			sizes="(min-width: 64rem) 50vw, 100vw"
+			format="webp"
+			quality="mid"
+			loading="eager"
+			fetchpriority="high"
+		/>
+	</div>
 </section>
 
 <style>
 	.hero {
-		position: relative;
 		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			'media'
+			'copy';
+		background-color: var(--color-white);
+	}
+
+	.copy {
+		grid-area: copy;
+		display: flex;
+		flex-direction: column;
 		align-items: center;
-		min-height: 90vh;
-		margin-top: -5.75rem;
-		overflow: hidden;
+		justify-content: center;
+		padding: 2.5rem var(--space-4) 3.25rem;
+		text-align: center;
+		background-color: var(--color-white);
 	}
 
-	.hero-image,
-	.hero :global(img) {
-		position: absolute;
-		inset: 0;
-		z-index: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		object-position: center top;
+	.brand {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.7rem;
+		margin: 0 0 1.75rem;
 	}
 
-	.overlay {
-		position: absolute;
-		inset: 0;
-		z-index: 1;
-		background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 79%, rgba(255, 255, 255, 1) 100%);
-		pointer-events: none;
+	.flag {
+		display: block;
+		width: 1.85rem;
+		height: auto;
 	}
 
-	.inner {
-		position: relative;
-		z-index: 2;
-		width: min(72rem, 100%);
-		margin-inline: auto;
-		padding: 8.5rem var(--space-4) 5.5rem;
+	.wordmark {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 0;
+		color: var(--color-primary);
+		font-family: var(--font-display);
+		font-weight: 700;
+		line-height: 1;
+	}
+
+	.wordmark-name {
+		font-size: 1.65rem;
+		letter-spacing: 0.14em;
+	}
+
+	.wordmark-line {
+		margin-top: 0.4rem;
+		font-size: 0.68rem;
+		letter-spacing: 0.38em;
 	}
 
 	h1 {
-		max-width: 18ch;
+		max-width: 16ch;
 		margin: 0 0 1.25rem;
-		color: var(--color-cream);
+		color: var(--color-primary);
+		font-size: clamp(2.25rem, 5vw, 3.75rem);
 	}
 
-	p {
-		max-width: 36rem;
+	.copy > p {
+		max-width: 34rem;
 		margin: 0 0 2rem;
-		color: var(--color-white);
+		color: var(--color-secondary);
 		font-size: 16px;
 		line-height: 1.6;
 	}
 
+	.media {
+		grid-area: media;
+		position: relative;
+		min-height: 18rem;
+		height: min(58vw, 22rem);
+		overflow: hidden;
+	}
+
+	.photo,
+	.media :global(img) {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		max-width: none;
+		object-fit: cover;
+		object-position: center 20%;
+	}
+
 	@media (min-width: 64rem) {
 		.hero {
-			min-height: 800px;
+			grid-template-columns: 1fr 1fr;
+			grid-template-areas: 'copy media';
+			min-height: min(85vh, 52rem);
+		}
+
+		.copy {
+			align-items: flex-start;
+			padding: 4.5rem clamp(1.75rem, 5vw, 5rem);
+			text-align: left;
+		}
+
+		.brand,
+		.wordmark {
+			align-items: flex-start;
+		}
+
+		h1 {
+			font-size: clamp(2.75rem, 4.2vw, 4.5rem);
+		}
+
+		.media {
+			min-height: min(85vh, 52rem);
+			height: auto;
+			align-self: stretch;
 		}
 	}
 </style>

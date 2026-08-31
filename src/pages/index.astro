@@ -3,10 +3,13 @@ import AboutTeaser from '../components/AboutTeaser.astro';
 import BenefitsCards from '../components/BenefitsCards.astro';
 import ContactSection from '../components/ContactSection.astro';
 import Hero from '../components/Hero.astro';
+import OccasionGallery from '../components/OccasionGallery.astro';
 import PartnersCarousel from '../components/PartnersCarousel.astro';
-import ProcessFlipCards from '../components/ProcessFlipCards.astro';
+import ProcessCards from '../components/ProcessCards.astro';
 import ProductGrid from '../components/ProductGrid.astro';
+import SectionCTA from '../components/SectionCTA.astro';
 import Testimonials from '../components/Testimonials.astro';
+import camisasImage from '../assets/images/home/products/camisas.jpeg';
 import site from '../data/site.json';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
@@ -35,11 +38,16 @@ const schema = {
 
 <BaseLayout {title} {description} {canonical} {schema}>
 	<Hero />
+	<PartnersCarousel />
+	<OccasionGallery />
 	<ProductGrid />
+	<SectionCTA
+		imageSrc={camisasImage}
+		imageAlt="Camisas sob medida dobradas, em branco e azul"
+	/>
 	<BenefitsCards />
 	<AboutTeaser />
-	<ProcessFlipCards />
+	<ProcessCards />
 	<Testimonials />
-	<PartnersCarousel />
 	<ContactSection />
 </BaseLayout>

@@ -1,33 +1,61 @@
 ---
-import { Image } from 'astro:assets';
-import logo from '../assets/logo-via-italy.webp';
 import site from '../data/site.json';
 
 const year = new Date().getFullYear();
 const whatsappHref = `https://wa.me/${site.whatsapp}`;
-const addressDisplay = 'R. Silva Bueno, 599 - Conjunto 511 - Ipiranga, São Paulo - SP, 04208-050';
 ---
 
 <footer>
 	<div class="inner">
-		<a class="logo" href="/" aria-label={`${site.name} — página inicial`}>
-			<Image
-				src={logo}
-				alt="Sartoria Via Italy"
-				width={119}
-				height={73}
-				format="webp"
-				quality="mid"
-				loading="lazy"
-			/>
+		<a class="brand" href="/" aria-label={`${site.name} — página inicial`}>
+			<svg
+				class="flag"
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 33 22"
+				width="33"
+				height="22"
+				aria-hidden="true"
+				focusable="false"
+			>
+				<rect width="11" height="22" fill="#009246"></rect>
+				<rect x="11" width="11" height="22" fill="#fff"></rect>
+				<rect x="22" width="11" height="22" fill="#ce2b37"></rect>
+				<rect x="0.4" y="0.4" width="32.2" height="21.2" fill="none" stroke="#e4e3dd" stroke-width="0.8"></rect>
+			</svg>
+			<span class="wordmark">
+				<span class="wordmark-name">VIA ITALY</span>
+				<span class="wordmark-line">SARTORIA</span>
+			</span>
 		</a>
 
-		<section class="contact" aria-labelledby="footer-contact-heading">
-			<h2 id="footer-contact-heading">Contato</h2>
+		<section class="visit" aria-labelledby="footer-visit-heading">
+			<h3 id="footer-visit-heading">Agende uma Visita.</h3>
 			<ul>
 				<li>
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+						<path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z"></path>
+						<circle cx="12" cy="10" r="2.5"></circle>
+					</svg>
+					<span>Rua Silva Bueno, 599 - Sala 511</span>
+				</li>
+				<li>
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+						<circle cx="12" cy="12" r="9"></circle>
+						<path d="M12 7v5l3 2"></path>
+					</svg>
+					<span>Segunda à sexta, das 9h às 19h</span>
+				</li>
+				<li>
+					<a href={whatsappHref} target="_blank" rel="noopener noreferrer">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+							<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"></path>
+						</svg>
+						<span>(11) 99662-7391</span>
+					</a>
+				</li>
+				<li>
 					<a href={site.instagram} target="_blank" rel="noopener noreferrer">
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
 							<rect x="3" y="3" width="18" height="18" rx="5"></rect>
 							<circle cx="12" cy="12" r="4"></circle>
 							<circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle>
@@ -35,24 +63,8 @@ const addressDisplay = 'R. Silva Bueno, 599 - Conjunto 511 - Ipiranga, São Paul
 						<span>@sartoriaviaitaly</span>
 					</a>
 				</li>
-				<li>
-					<a href={whatsappHref} target="_blank" rel="noopener noreferrer">
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-							<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"></path>
-						</svg>
-						<span>(11) 99662-7391</span>
-					</a>
-				</li>
-				<li>
-					<p>
-						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-							<path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z"></path>
-							<circle cx="12" cy="10" r="2.5"></circle>
-						</svg>
-						<span>{addressDisplay}</span>
-					</p>
-				</li>
 			</ul>
+			<hr />
 		</section>
 	</div>
 	<p class="copy">© {year} {site.name}</p>
@@ -74,32 +86,52 @@ const addressDisplay = 'R. Silva Bueno, 599 - Conjunto 511 - Ipiranga, São Paul
 		padding: var(--space-12) var(--space-4) var(--space-8);
 	}
 
-	.logo {
+	.brand {
 		display: flex;
-		align-items: center;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.65rem;
 		width: fit-content;
-		line-height: 0;
-	}
-
-	.logo :global(img) {
-		display: block;
-		height: 73px;
-		width: auto;
-	}
-
-	.contact h2 {
-		margin: 0 0 var(--space-3);
-		padding-bottom: var(--space-3);
-		border-bottom: 1px solid rgb(255 255 255 / 0.45);
 		color: var(--color-white);
-		font-family: var(--font-body);
-		font-size: 1rem;
-		font-weight: 700;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
+		text-decoration: none;
 	}
 
-	.contact ul {
+	.flag {
+		display: block;
+		width: 1.85rem;
+		height: auto;
+	}
+
+	.wordmark {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		font-family: var(--font-display);
+		font-weight: 700;
+		line-height: 1;
+	}
+
+	.wordmark-name {
+		font-size: 1.65rem;
+		letter-spacing: 0.14em;
+	}
+
+	.wordmark-line {
+		margin-top: 0.4rem;
+		font-size: 0.68rem;
+		letter-spacing: 0.38em;
+	}
+
+	.visit h3 {
+		margin: 0 0 var(--space-4);
+		color: var(--color-white);
+		font-family: var(--font-display);
+		font-size: 1.65rem;
+		font-weight: 700;
+		line-height: 1.2;
+	}
+
+	.visit ul {
 		display: grid;
 		gap: var(--space-3);
 		margin: 0;
@@ -107,8 +139,8 @@ const addressDisplay = 'R. Silva Bueno, 599 - Conjunto 511 - Ipiranga, São Paul
 		list-style: none;
 	}
 
-	.contact a,
-	.contact p {
+	.visit li,
+	.visit a {
 		display: flex;
 		align-items: flex-start;
 		gap: 0.7rem;
@@ -119,22 +151,29 @@ const addressDisplay = 'R. Silva Bueno, 599 - Conjunto 511 - Ipiranga, São Paul
 		text-decoration: none;
 	}
 
-	.contact a:hover,
-	.contact a:focus-visible {
+	.visit a:hover,
+	.visit a:focus-visible {
 		color: var(--color-white);
 		text-decoration: underline;
 		text-underline-offset: 0.18em;
 	}
 
-	.contact svg {
+	.visit svg {
 		flex-shrink: 0;
-		margin-top: 0.2rem;
+		margin-top: 0.15rem;
+	}
+
+	.visit hr {
+		width: 100%;
+		height: 1px;
+		margin: var(--space-6) 0 0;
+		border: 0;
+		background-color: rgb(255 255 255 / 0.35);
 	}
 
 	.copy {
 		margin: 0;
 		padding: var(--space-4);
-		border-top: 1px solid rgb(255 255 255 / 0.2);
 		color: var(--color-cream);
 		font-size: 0.8rem;
 		text-align: center;
@@ -146,7 +185,7 @@ const addressDisplay = 'R. Silva Bueno, 599 - Conjunto 511 - Ipiranga, São Paul
 			align-items: start;
 		}
 
-		.contact {
+		.visit {
 			justify-self: end;
 			min-width: 22rem;
 		}

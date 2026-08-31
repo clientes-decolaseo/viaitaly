@@ -20,144 +20,41 @@ const partners = [
 ---
 
 <section class="partners" aria-labelledby="partners-heading">
-	<div class="dots-pattern" aria-hidden="true"></div>
 	<div class="inner">
 		<h2 id="partners-heading">
 			Parceiros na <span class="text-gradient-red">Europa</span>
 		</h2>
-		<div class="carousel" data-partners-carousel>
-			<button type="button" class="nav prev" data-prev aria-label="Ver parceiros anteriores">
-				<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-					<path d="M15.2 4.2 7.4 12l7.8 7.8"></path>
-				</svg>
-			</button>
-			<ul class="track" tabindex="0">
+		<div class="scroller">
+			<ul class="logos">
 				{
 					partners.map((partner) => (
 						<li>
-							<div class="slot">
-								<Image
-									src={partner.logo}
-									alt={`Logo de ${partner.name}`}
-									widths={[200, 320, 400]}
-									sizes="(min-width: 64rem) 12rem, 42vw"
-									format="webp"
-									quality="mid"
-								/>
-							</div>
+							<Image
+								src={partner.logo}
+								alt={`Logo de ${partner.name}`}
+								widths={[200, 320, 400]}
+								sizes="(min-width: 64rem) 9rem, 8rem"
+								format="webp"
+								quality="mid"
+							/>
 						</li>
 					))
 				}
 			</ul>
-			<button type="button" class="nav next" data-next aria-label="Ver próximos parceiros">
-				<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-					<path d="M8.8 4.2 16.6 12l-7.8 7.8"></path>
-				</svg>
-			</button>
 		</div>
-		<div class="pager" data-dots role="tablist" aria-label="Navegação dos parceiros"></div>
 	</div>
 </section>
 
-<script>
-	document.querySelectorAll('[data-partners-carousel]').forEach((root) => {
-		const section = root.closest('.partners');
-		const track = root.querySelector<HTMLElement>('.track');
-		const prev = root.querySelector<HTMLButtonElement>('[data-prev]');
-		const next = root.querySelector<HTMLButtonElement>('[data-next]');
-		const pager = section?.querySelector<HTMLElement>('[data-dots]');
-		if (!track || !prev || !next || !pager) return;
-
-		const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-		const step = () => {
-			const card = track.querySelector('li');
-			return card ? card.getBoundingClientRect().width : track.clientWidth;
-		};
-
-		const pageCount = () => {
-			const card = track.querySelector('li');
-			if (!card) return 1;
-			const visible = Math.max(1, Math.round(track.clientWidth / step()));
-			return Math.max(1, track.children.length - visible + 1);
-		};
-
-		const currentIndex = () => Math.round(track.scrollLeft / step());
-
-		const scrollToIndex = (index: number) => {
-			const max = pageCount() - 1;
-			const nextIndex = ((index % (max + 1)) + (max + 1)) % (max + 1);
-			const behavior = reduceMotion ? 'auto' : 'smooth';
-			track.style.scrollSnapType = 'none';
-			track.scrollTo({ left: Math.round(nextIndex * step()), behavior });
-			window.setTimeout(() => {
-				track.style.scrollSnapType = '';
-			}, reduceMotion ? 0 : 450);
-		};
-
-		const renderDots = () => {
-			const count = pageCount();
-			const active = Math.min(currentIndex(), count - 1);
-			pager.innerHTML = '';
-			for (let i = 0; i < count; i += 1) {
-				const button = document.createElement('button');
-				button.type = 'button';
-				button.setAttribute('role', 'tab');
-				button.setAttribute('aria-label', `Ir para o grupo ${i + 1} de parceiros`);
-				if (i === active) button.setAttribute('aria-current', 'true');
-				button.addEventListener('click', () => scrollToIndex(i));
-				pager.append(button);
-			}
-		};
-
-		const syncDots = () => {
-			const buttons = pager.querySelectorAll('button');
-			if (buttons.length !== pageCount()) {
-				renderDots();
-				return;
-			}
-			const active = Math.min(currentIndex(), buttons.length - 1);
-			buttons.forEach((button, i) => {
-				if (i === active) button.setAttribute('aria-current', 'true');
-				else button.removeAttribute('aria-current');
-			});
-		};
-
-		prev.addEventListener('click', () => scrollToIndex(currentIndex() - 1));
-		next.addEventListener('click', () => scrollToIndex(currentIndex() + 1));
-		track.addEventListener('scroll', syncDots, { passive: true });
-		window.addEventListener('resize', renderDots);
-
-		renderDots();
-	});
-</script>
-
 <style>
 	.partners {
-		position: relative;
-		overflow: hidden;
-		padding: var(--space-12) var(--space-4) 4.5rem;
-		background-color: var(--color-white);
-	}
-
-	.dots-pattern {
-		position: absolute;
-		top: 0.75rem;
-		right: 1.25rem;
-		z-index: 0;
-		width: 11rem;
-		height: 8.5rem;
-		background-image: radial-gradient(circle, #cfcfcf 1.1px, transparent 1.2px);
-		background-size: 12px 12px;
-		mask-image: radial-gradient(ellipse at 100% 0%, black 18%, transparent 78%);
-		pointer-events: none;
+		padding: var(--space-12) 0;
+		background-color: #f3f2ee;
 	}
 
 	.inner {
-		position: relative;
-		z-index: 1;
 		max-width: var(--max-width);
 		margin-inline: auto;
+		padding-inline: var(--space-4);
 	}
 
 	h2 {
@@ -167,111 +64,61 @@ const partners = [
 		letter-spacing: 0.02em;
 	}
 
-	.carousel {
-		display: grid;
-		grid-template-columns: auto 1fr auto;
-		align-items: center;
-		gap: 0.35rem;
-	}
-
-	.track {
-		display: flex;
-		margin: 0;
-		padding: 0.5rem 0;
+	.scroller {
 		overflow-x: auto;
-		list-style: none;
-		scroll-snap-type: x mandatory;
-		scrollbar-width: none;
 		-webkit-overflow-scrolling: touch;
 	}
 
-	.track::-webkit-scrollbar {
-		display: none;
-	}
-
-	.track li {
-		flex: 0 0 50%;
-		min-width: 0;
-		overflow: hidden;
-		scroll-snap-align: start;
-	}
-
-	.slot {
+	.logos {
 		display: flex;
 		align-items: center;
-		justify-content: center;
-		min-height: 6.5rem;
-		padding: 0.35rem 0.5rem;
+		justify-content: space-between;
+		min-width: 56rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
 	}
 
-	.slot :global(img) {
+	.logos li {
+		position: relative;
+		display: flex;
+		flex: 1 1 0;
+		align-items: center;
+		justify-content: center;
+		min-width: 7.5rem;
+		padding: 0.75rem 1rem;
+	}
+
+	.logos li:not(:last-child)::after {
+		position: absolute;
+		top: 18%;
+		right: 0;
+		bottom: 18%;
+		width: 1px;
+		background-color: var(--color-border-muted);
+		content: '';
+	}
+
+	.logos :global(img) {
 		display: block;
 		width: auto;
 		max-width: 100%;
-		height: 4.75rem;
+		height: 4.5rem;
 		object-fit: contain;
 	}
 
-	.nav {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		width: 2.25rem;
-		height: 2.25rem;
-		padding: 0;
-		border: 0;
-		background: transparent;
-		color: var(--color-primary);
-		cursor: pointer;
-		opacity: 1;
-		transition: opacity 0.2s;
-	}
-
-	.nav:hover,
-	.nav:focus-visible {
-		opacity: 0.45;
-	}
-
-	.pager {
-		display: flex;
-		justify-content: center;
-		gap: 0.55rem;
-		margin-top: var(--space-6);
-	}
-
-	.pager :global(button) {
-		width: 8px;
-		height: 8px;
-		padding: 0;
-		border: 0;
-		border-radius: 999px;
-		background-color: #d4d4d4;
-		cursor: pointer;
-	}
-
-	.pager :global(button[aria-current='true']) {
-		background-color: var(--color-primary);
-	}
-
-	@media (min-width: 48rem) {
-		.track li {
-			flex-basis: 33.333%;
-		}
-	}
-
 	@media (min-width: 64rem) {
-		.track li {
-			flex-basis: 20%;
+		.scroller {
+			overflow-x: visible;
 		}
 
-		.slot :global(img) {
-			height: 5.5rem;
+		.logos {
+			min-width: 0;
+			width: 100%;
 		}
-	}
 
-	@media (prefers-reduced-motion: reduce) {
-		.track {
-			scroll-snap-type: none;
+		.logos :global(img) {
+			height: 5.25rem;
 		}
 	}
 </style>

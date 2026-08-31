@@ -1,0 +1,151 @@
+---
+const etapas = [
+	{
+		title: 'Qual é a ocasião?',
+		text: 'Aqui iremos entender para qual ocasião é o traje. Para o trabalho (rotina, cores usuais, deslocamento, cargo, viagens e etc) ou para um casamento (tipo da cerimônia, local, estação).',
+		icon: 'message',
+	},
+	{
+		title: 'Tecidos e Padronagem',
+		text: 'Nessa fase apresentaremos os melhores tecidos de acordo com a ocasião, definiremos juntos os forros, aviamentos e composição.',
+		icon: 'layers',
+	},
+	{
+		title: 'Medidas Corporais',
+		text: 'Agora faremos a medição de todo o corpo para que possamos ajustar o corte e tecidos perfeitamente a cada biotipo corporal.',
+		icon: 'ruler',
+	},
+	{
+		title: 'Provas',
+		text: 'São feitas no mínimo 4 provas num local de escolha do cliente, para a manipulação do tecido no corpo, eliminando assim sobras de tecido e rugas, para um caimento perfeito.',
+		icon: 'sparkles',
+	},
+] as const;
+---
+
+<section class="process" aria-labelledby="process-heading">
+	<div class="inner">
+		<h2 id="process-heading">Processo de criação</h2>
+		<ol class="grid">
+			{
+				etapas.map((etapa) => (
+					<li>
+						<article class="card">
+							<span class="icon" aria-hidden="true">
+								{etapa.icon === 'message' && (
+									<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+										<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+									</svg>
+								)}
+								{etapa.icon === 'layers' && (
+									<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+										<path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.91a1 1 0 0 0 0-1.83z"></path>
+										<path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path>
+										<path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path>
+									</svg>
+								)}
+								{etapa.icon === 'ruler' && (
+									<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+										<path d="M21.3 8.7 8.7 21.3c-1 1-2.5 1-3.4 0l-2.6-2.6c-1-1-1-2.5 0-3.4L15.3 2.7c1-1 2.5-1 3.4 0l2.6 2.6c1 1 1 2.5 0 3.4Z"></path>
+										<path d="m14.5 7.5 1 1"></path>
+										<path d="m11.5 10.5 1 1"></path>
+										<path d="m8.5 13.5 1 1"></path>
+										<path d="m17.5 4.5 1 1"></path>
+									</svg>
+								)}
+								{etapa.icon === 'sparkles' && (
+									<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+										<path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"></path>
+										<path d="M5 3v4"></path>
+										<path d="M19 17v4"></path>
+										<path d="M3 5h4"></path>
+										<path d="M17 19h4"></path>
+									</svg>
+								)}
+							</span>
+							<h3>{etapa.title}</h3>
+							<p>{etapa.text}</p>
+						</article>
+					</li>
+				))
+			}
+		</ol>
+	</div>
+</section>
+
+<style>
+	.process {
+		padding: var(--space-12) var(--space-4);
+		background-color: var(--color-white);
+	}
+
+	.inner {
+		max-width: var(--max-width);
+		margin-inline: auto;
+	}
+
+	h2 {
+		margin: 0 0 var(--space-8);
+		text-align: center;
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-6);
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		min-height: 100%;
+		padding: var(--space-8) var(--space-4) var(--space-6);
+		text-align: center;
+		background-color: #f3f2ee;
+	}
+
+	.icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 1rem;
+		color: var(--color-brand-green);
+	}
+
+	h3 {
+		margin: 0 0 0.85rem;
+		color: var(--color-brand-green);
+		font-family: var(--font-display);
+		font-size: 1.35rem;
+		font-weight: 700;
+		line-height: 1.2;
+	}
+
+	p {
+		margin: 0;
+		color: var(--color-secondary);
+		font-size: 0.95rem;
+		line-height: 1.55;
+	}
+
+	@media (min-width: 48rem) {
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.grid {
+			grid-template-columns: repeat(4, 1fr);
+			align-items: stretch;
+		}
+
+		.card {
+			padding-inline: 1.15rem;
+		}
+	}
+</style>

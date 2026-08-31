@@ -1,44 +1,62 @@
 ---
 import { Image } from 'astro:assets';
 import sobreFoto from '../assets/images/home/sobre-foto.jpeg';
+
+const valores = [
+	{
+		title: 'Tradição e Excelência',
+		text: 'Mais de 12 anos dedicados à alfaiataria masculina de alto padrão. Nossa experiência se reflete em cada corte, prova e acabamento.',
+	},
+	{
+		title: 'Exclusividade',
+		text: 'Todas as peças são feitas uma a uma, 100% bespoke. Atendimento personalizado, com discrição, pontualidade e atenção aos mínimos detalhes.',
+	},
+	{
+		title: 'Atendimento Personalizado',
+		text: 'O atendimento é sempre feito com hora marcada. Essa escolha existe para garantir a atenção devida a cada cliente, sem pressa e sem sobreposição de agendas. O atendimento pode ser realizado no ateliê da Sartoria Via Italy ou no endereço de escolha do cliente.',
+	},
+];
 ---
 
 <section class="about" aria-labelledby="about-heading">
 	<div class="inner">
-		<div class="copy">
-			<p class="eyebrow">Sobre nós</p>
-			<h2 id="about-heading">
-				Sartoria Via Italy
-				<span class="text-gradient-red">Excelência em alfaiataria bespoke</span>
-			</h2>
-			<p>
-				Desde 2012, confeccionamos ternos Bespoke Full Canvas totalmente artesanais com os
-				melhores tecidos da Europa. Cada peça é criada para oferecer exclusividade, caimento
-				impecável e elegância feita para durar.
-			</p>
+		<h2 id="about-heading">
+			<span>Muito Prazer, </span>
+			<span class="text-gradient-red">Sartoria Via Italy.</span>
+		</h2>
+		<ul class="values">
+			{
+				valores.map((valor) => (
+					<li>
+						<h3>{valor.title}</h3>
+						<p>{valor.text}</p>
+					</li>
+				))
+			}
+		</ul>
+		<div class="showcase">
+			<div class="media">
+				<Image
+					class="photo"
+					src={sobreFoto}
+					alt="Sergio Saturnino, fundador da Sartoria Via Italy"
+					widths={[480, 768, 1024, 1280]}
+					sizes="(min-width: 64rem) 50vw, 100vw"
+					format="webp"
+					quality="mid"
+				/>
+				<ul class="stats">
+					<li>
+						<strong>27+</strong>
+						<span>Anos de experiência</span>
+					</li>
+					<li>
+						<strong>1397+</strong>
+						<span>Clientes</span>
+					</li>
+				</ul>
+			</div>
 			<a class="btn-primary" href="/sobre/">Conheça Sergio Saturnino</a>
-		</div>
-
-		<div class="media">
-			<Image
-				class="photo"
-				src={sobreFoto}
-				alt="Sergio Saturnino, fundador da Sartoria Via Italy"
-				widths={[480, 768, 1024, 1280]}
-				sizes="(min-width: 64rem) 50vw, 100vw"
-				format="webp"
-				quality="mid"
-			/>
-			<ul class="stats">
-				<li>
-					<strong>27+</strong>
-					<span>Anos de experiência</span>
-				</li>
-				<li>
-					<strong>1397+</strong>
-					<span>Clientes</span>
-				</li>
-			</ul>
 		</div>
 	</div>
 </section>
@@ -55,40 +73,52 @@ import sobreFoto from '../assets/images/home/sobre-foto.jpeg';
 		gap: var(--space-8);
 		max-width: var(--max-width);
 		margin-inline: auto;
-		align-items: center;
-	}
-
-	.eyebrow {
-		margin: 0 0 var(--space-3);
-		color: var(--color-border-muted);
-		font-family: var(--font-body);
-		font-size: 14px;
-		font-weight: 700;
-		letter-spacing: 3px;
-		text-transform: uppercase;
 	}
 
 	h2 {
 		display: flex;
 		flex-direction: column;
-		gap: 0.35rem;
-		margin: 0 0 var(--space-6);
+		align-items: center;
+		gap: 0.2rem;
+		margin: 0;
+		text-align: center;
 		color: var(--color-cream);
 	}
 
-	h2 .text-gradient-red {
-		font-size: 0.72em;
+	.values {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-6);
+		margin: 0;
+		padding: 0;
+		list-style: none;
 	}
 
-	.copy p {
-		max-width: 38rem;
-		margin: 0 0 var(--space-8);
+	.values h3 {
+		margin: 0 0 0.65rem;
+		color: var(--color-brand-green);
+		font-family: var(--font-display);
+		font-size: 1.45rem;
+		font-weight: 700;
+		line-height: 1.2;
+	}
+
+	.values p {
+		margin: 0;
 		color: var(--color-cream);
-		line-height: 1.7;
+		font-size: 0.95rem;
+		line-height: 1.6;
+	}
+
+	.showcase {
+		display: grid;
+		gap: var(--space-6);
+		justify-items: center;
 	}
 
 	.media {
 		position: relative;
+		width: 100%;
 	}
 
 	.photo,
@@ -135,12 +165,15 @@ import sobreFoto from '../assets/images/home/sobre-foto.jpeg';
 		text-transform: uppercase;
 	}
 
-	@media (min-width: 64rem) {
-		.inner {
-			grid-template-columns: 1fr 1fr;
-			gap: var(--space-12);
+	@media (min-width: 48rem) {
+		.values {
+			grid-template-columns: repeat(3, 1fr);
+			gap: var(--space-6);
+			align-items: start;
 		}
+	}
 
+	@media (min-width: 64rem) {
 		.media :global(img) {
 			min-height: 28rem;
 		}

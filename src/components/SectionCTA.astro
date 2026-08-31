@@ -1,0 +1,167 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import site from '../data/site.json';
+
+interface Props {
+	imageSrc?: ImageMetadata;
+	imageAlt?: string;
+	ctaText?: string;
+	ctaHref?: string;
+}
+
+const defaultWhatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappDefaultMessage)}`;
+
+const {
+	imageSrc,
+	imageAlt = 'Peça sob medida da Sartoria Via Italy',
+	ctaText = 'Realizar orçamento',
+	ctaHref = defaultWhatsappHref,
+} = Astro.props;
+
+const isExternal = ctaHref.startsWith('http');
+const opensWhatsapp = ctaHref.includes('wa.me');
+---
+
+<section class:list={['cta-band', imageSrc && 'has-media']} aria-label={ctaText}>
+	{
+		imageSrc && (
+			<div class="media">
+				<Image
+					src={imageSrc}
+					alt={imageAlt}
+					widths={[640, 960, 1280, 1920]}
+					sizes="(min-width: 64rem) 50vw, 100vw"
+					format="webp"
+					quality="mid"
+				/>
+			</div>
+		)
+	}
+	<div class="panel">
+		<div class="brand">
+			<svg
+				class="flag"
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 33 22"
+				width="33"
+				height="22"
+				aria-hidden="true"
+				focusable="false"
+			>
+				<rect width="11" height="22" fill="#009246"></rect>
+				<rect x="11" width="11" height="22" fill="#fff"></rect>
+				<rect x="22" width="11" height="22" fill="#ce2b37"></rect>
+				<rect x="0.4" y="0.4" width="32.2" height="21.2" fill="none" stroke="#c8c8c8" stroke-width="0.8"></rect>
+			</svg>
+			<p class="wordmark">
+				<span class="wordmark-name">VIA ITALY</span>
+				<span class="wordmark-line">SARTORIA</span>
+			</p>
+		</div>
+		<a
+			class="btn-primary"
+			href={ctaHref}
+			target={isExternal ? '_blank' : undefined}
+			rel={isExternal ? 'noopener noreferrer' : undefined}
+			aria-label={opensWhatsapp ? `${ctaText} (abre o WhatsApp em nova aba)` : undefined}
+		>
+			{ctaText}
+		</a>
+	</div>
+</section>
+
+<style>
+	.cta-band {
+		display: grid;
+		grid-template-columns: 1fr;
+		background-color: var(--color-white);
+	}
+
+	.media {
+		position: relative;
+		min-height: 16rem;
+		height: min(52vw, 20rem);
+		overflow: hidden;
+	}
+
+	.media :global(picture),
+	.media :global(img) {
+		position: absolute;
+		inset: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
+		max-width: none;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	.panel {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1.75rem;
+		padding: 3rem var(--space-4);
+		text-align: center;
+		background-color: var(--color-white);
+	}
+
+	.brand {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.flag {
+		display: block;
+		width: 2rem;
+		height: auto;
+	}
+
+	.wordmark {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 0;
+		color: var(--color-primary);
+		font-family: var(--font-display);
+		font-weight: 700;
+		line-height: 1;
+	}
+
+	.wordmark-name {
+		font-size: 1.85rem;
+		letter-spacing: 0.16em;
+	}
+
+	.wordmark-line {
+		margin-top: 0.45rem;
+		font-size: 0.72rem;
+		letter-spacing: 0.4em;
+	}
+
+	@media (min-width: 64rem) {
+		.cta-band.has-media {
+			grid-template-columns: 1fr 1fr;
+			min-height: 28rem;
+		}
+
+		.cta-band:not(.has-media) .panel {
+			min-height: 22rem;
+			padding-block: 5rem;
+		}
+
+		.media {
+			min-height: 28rem;
+			height: auto;
+			align-self: stretch;
+		}
+
+		.panel {
+			padding: 4rem 3rem;
+		}
+	}
+</style>
