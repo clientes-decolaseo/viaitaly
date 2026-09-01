@@ -28,6 +28,10 @@ const tecidosArtigo = TERNOS_SOB_MEDIDA_HUB.spokes.find(
 	<article class="page">
 		<h1>Terno Sob Medida em São Paulo</h1>
 
+		<aside class="coverage-note" role="note">
+			<p>Atendimento presencial disponível em São Paulo capital e Grande São Paulo.</p>
+		</aside>
+
 		<section aria-labelledby="o-que-e-bespoke">
 			<h2 id="o-que-e-bespoke">O que é um terno bespoke</h2>
 			<p>
@@ -52,6 +56,11 @@ const tecidosArtigo = TERNOS_SOB_MEDIDA_HUB.spokes.find(
 				O atendimento é com hora marcada, no ateliê ou no endereço do cliente. Assim o
 				processo começa no local combinado, do molde ao acabamento final.
 			</p>
+			<ul class="highlights">
+				<li>Costurado 100% à mão, sem cola (peça leve, anatômica, não amarrota)</li>
+				<li>Tecidos 100% lã fria, de origem europeia</li>
+				<li>Vida útil média de 15 anos</li>
+			</ul>
 		</section>
 
 		<section aria-labelledby="tecidos-disponiveis">
@@ -85,7 +94,8 @@ const tecidosArtigo = TERNOS_SOB_MEDIDA_HUB.spokes.find(
 				<div>
 					<dt>Quanto tempo leva para o terno ficar pronto?</dt>
 					<dd>
-						[CONFIRMAR] Prazo específico de produção, provas e entrega na Via Italy.
+						O prazo mínimo de produção é de 6 meses, para qualquer encomenda. Esse
+						intervalo acomoda as etapas do processo bespoke sem pressa.
 					</dd>
 				</div>
 				<div>
@@ -98,8 +108,8 @@ const tecidosArtigo = TERNOS_SOB_MEDIDA_HUB.spokes.find(
 				<div>
 					<dt>O atendimento precisa ser no ateliê?</dt>
 					<dd>
-						O agendamento pode ser no ateliê ou no endereço do cliente.
-						[CONFIRMAR] Condições específicas de deslocamento e cobertura em São Paulo.
+						O agendamento pode ser no ateliê ou no endereço do cliente. Atendimento
+						presencial disponível em São Paulo capital e Grande São Paulo.
 					</dd>
 				</div>
 			</dl>
@@ -139,6 +149,39 @@ const tecidosArtigo = TERNOS_SOB_MEDIDA_HUB.spokes.find(
 		font-size: clamp(1.9rem, 4vw, 2.75rem);
 		line-height: 1.2;
 		color: var(--color-navy);
+	}
+
+	.coverage-note {
+		margin: 0 0 var(--space-8);
+		padding: var(--space-4) var(--space-6);
+		border: 1px solid var(--color-border);
+		border-left: 3px solid var(--color-brand-green);
+		border-radius: var(--radius);
+		background-color: var(--color-cream);
+	}
+
+	.coverage-note p {
+		margin: 0;
+	}
+
+	.highlights {
+		margin: var(--space-6) 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	.highlights li {
+		margin: 0 0 var(--space-3);
+		padding: var(--space-4) var(--space-6);
+		border: 1px solid var(--color-border);
+		border-left: 3px solid var(--color-brand-green);
+		border-radius: var(--radius);
+		background-color: var(--color-cream);
+		color: var(--color-ink-soft);
+	}
+
+	.highlights li:last-child {
+		margin-bottom: 0;
 	}
 
 	h2 {

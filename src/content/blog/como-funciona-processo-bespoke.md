@@ -3,7 +3,7 @@ title: "Como Funciona o Processo Bespoke: Etapas e Provas"
 description: "Do molde individual à última prova: entenda as etapas do processo bespoke de um terno sob medida artesanal na Sartoria Via Italy."
 h1: "Como Funciona o Processo Bespoke"
 pubDate: 2026-08-26
-updatedDate: 2026-08-26
+updatedDate: 2026-09-01
 author: "Sergio Saturnino"
 pillarSlug: "ternos-sob-medida-sp"
 priority: "media"
@@ -53,5 +53,7 @@ A entrega marca o fim de um processo que começou com uma conversa e uma mediç�
 ## Por Que Esse Processo Importa
 
 Cada uma dessas etapas existe para eliminar o principal problema de peças prontas: a incerteza sobre o caimento. Quando o molde nasce do corpo do cliente, e não de um padrão de tamanho, o resultado tende a ser muito mais próximo do ideal.
+
+A construção segue o full canvas já usado na Via Italy: a peça não usa cola — toda ela é costurada à mão. O resultado é uma peça mais leve, anatômica, que não amarrota com o uso.
 
 Quer iniciar esse processo? Conheça mais na [página principal sobre terno sob medida em São Paulo](/ternos-sob-medida-sp/) ou agende uma conversa inicial.

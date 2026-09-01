@@ -3,14 +3,14 @@ title: "Tecidos Nobres para Terno: Drago, Zegna e Loro Piana"
 description: "Conheça as casas têxteis europeias usadas em ternos sob medida de alta alfaiataria: Loro Piana, Zegna, Drago, Cerruti, Reda, Piacenza e Dormeuil."
 h1: "Tecidos Nobres: Drago, Zegna e Loro Piana"
 pubDate: 2026-08-26
-updatedDate: 2026-08-26
+updatedDate: 2026-09-01
 author: "Sergio Saturnino"
 pillarSlug: "ternos-sob-medida-sp"
 priority: "media"
 draft: false
 ---
 
-O resultado de um terno bespoke depende diretamente do tecido escolhido. Por isso, a Sartoria Via Italy trabalha com parcerias diretas junto a algumas das casas têxteis mais respeitadas da Europa. Conheça cada uma delas.
+O resultado de um terno bespoke depende diretamente do tecido escolhido. Por isso, a Sartoria Via Italy trabalha com parcerias diretas junto a algumas das casas têxteis mais respeitadas da Europa. Todos os tecidos trabalhados são 100% lã fria, de origem europeia. Conheça cada uma delas.
 
 ## Loro Piana
 

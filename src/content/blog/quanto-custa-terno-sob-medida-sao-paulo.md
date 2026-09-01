@@ -3,7 +3,7 @@ title: "Quanto Custa um Terno Sob Medida em São Paulo?"
 description: "Fatores que definem o preço de um terno sob medida em São Paulo: tecido, técnica de confecção e nível de acabamento à mão. Guia para quem vai investir."
 h1: "Quanto Custa um Terno Sob Medida em São Paulo"
 pubDate: 2026-08-26
-updatedDate: 2026-08-26
+updatedDate: 2026-09-01
 author: "Sergio Saturnino"
 pillarSlug: "ternos-sob-medida-sp"
 priority: "alta"
@@ -40,6 +40,8 @@ Mais do que comparar preços isolados, vale considerar:
 - Se o tecido resiste bem ao uso frequente
 - Se o caimento exige menos ajustes futuros
 - Se a ocasião de uso (trabalho, casamento, eventos) justifica uma peça exclusiva
+
+Um terno bespoke bem cuidado tem vida útil média de 15 anos. Esse horizonte reforça o custo-benefício frente ao investimento inicial: o valor se avalia pelo uso ao longo do tempo, não só pela primeira compra.
 
 ## Fale Sobre o Seu Projeto
 
