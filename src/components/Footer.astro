@@ -1,7 +1,7 @@
 ---
 import site from '../data/site.json';
 
-const whatsappHref = `https://wa.me/${site.whatsapp}`;
+const whatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappDefaultMessage)}`;
 ---
 
 <footer class="site-foot">
@@ -53,16 +53,6 @@ const whatsappHref = `https://wa.me/${site.whatsapp}`;
 				</li>
 			</ul>
 		</section>
-
-		<hr class="site-foot-rule" />
-
-		<p class="site-foot-legal">
-			Ao clicar no botão você concorda que os dados pessoais fornecidos acima serão utilizados
-			para envio de conteúdo informativo, analítico e publicitário sobre produtos, serviços e
-			assuntos gerais, nos termos da Lei Geral de Proteção de Dados. Ao clicar no botão e
-			continuar com seu cadastro, você autoriza a coletar seus dados pessoais de acordo com a
-			nossa Política de privacidade.
-		</p>
 	</div>
 </footer>
 
@@ -167,21 +157,6 @@ const whatsappHref = `https://wa.me/${site.whatsapp}`;
 		color: var(--color-brand-green);
 	}
 
-	.site-foot-rule {
-		width: 100%;
-		height: 2px;
-		margin: 0.25rem 0 0;
-		border: 0;
-		background-color: var(--color-brand-green);
-	}
-
-	.site-foot-legal {
-		margin: 0;
-		color: #767676;
-		font-size: 0.78rem;
-		line-height: 1.55;
-	}
-
 	@media (min-width: 64rem) {
 		.site-foot-inner {
 			grid-template-columns: 1fr 1fr;
@@ -192,11 +167,6 @@ const whatsappHref = `https://wa.me/${site.whatsapp}`;
 		.site-foot-visit {
 			justify-self: end;
 			min-width: 22rem;
-		}
-
-		.site-foot-rule,
-		.site-foot-legal {
-			grid-column: 1 / -1;
 		}
 	}
 </style>

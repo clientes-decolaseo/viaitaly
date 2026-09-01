@@ -1,5 +1,7 @@
 ---
-const href = `https://wa.me/5511996627391?text=${encodeURIComponent('Olá, vim pelo site!')}`;
+import site from '../data/site.json';
+
+const href = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappDefaultMessage)}`;
 ---
 
 <a

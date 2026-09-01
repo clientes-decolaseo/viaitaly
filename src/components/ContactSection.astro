@@ -1,5 +1,7 @@
 ---
-const whatsappHref = `https://wa.me/5511996627391?text=${encodeURIComponent('Olá, vim pelo site!')}`;
+import site from '../data/site.json';
+
+const whatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappDefaultMessage)}`;
 const mapSrc =
 	'https://maps.google.com/maps?q=SARTORIA%20VIA%20ITALY%20s%C3%A3o%20paulo&t=m&z=14&output=embed&iwloc=near';
 ---

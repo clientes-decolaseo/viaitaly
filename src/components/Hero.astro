@@ -1,5 +1,7 @@
 ---
-const whatsappHref = `https://wa.me/5511996627391?text=${encodeURIComponent('Olá, vim pelo site!')}`;
+import site from '../data/site.json';
+
+const whatsappHref = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappDefaultMessage)}`;
 ---
 
 <section class="hero" aria-labelledby="hero-heading">
