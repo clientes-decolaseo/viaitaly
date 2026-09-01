@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import calcasImage from '../assets/images/home/products/calcas.jpeg';
 import camisasImage from '../assets/images/home/products/camisas.jpeg';
 import costumesImage from '../assets/images/home/products/costumes.jpeg';
-import paletosImage from '../assets/images/home/products/paletos.png';
+import paletosImage from '../assets/images/home/products/paletos.jpg';
 import ternosImage from '../assets/images/home/products/ternos.jpeg';
 
 const pecas = [
@@ -20,7 +20,8 @@ const pecas = [
 	{
 		title: 'Paletós',
 		image: paletosImage,
-		alt: 'Paletó azul texturizado com camisa branca, ajuste do botão na cintura',
+		alt: 'Homem de paletó azul-marinho sob medida, camisa clara e gravata, apoiado em mesa',
+		mediaClass: 'media-portrait',
 	},
 	{
 		title: 'Calças',
@@ -43,7 +44,7 @@ const pecas = [
 				pecas.map((peca) => (
 					<li>
 						<article class="card">
-							<div class="media">
+							<div class:list={['media', peca.mediaClass]}>
 								<Image
 									src={peca.image}
 									alt={peca.alt}
@@ -108,6 +109,10 @@ const pecas = [
 		max-width: none;
 		object-fit: cover;
 		object-position: center;
+	}
+
+	.media-portrait :global(img) {
+		object-position: center 18%;
 	}
 
 	.media::after {

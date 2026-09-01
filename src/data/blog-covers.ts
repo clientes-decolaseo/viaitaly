@@ -2,7 +2,7 @@ import type { ImageMetadata } from 'astro';
 import tecidosNobres from '../assets/images/home/benefits/tecidos-nobres.webp';
 import sobreFoto from '../assets/images/home/sobre-foto.jpeg';
 import costumesImage from '../assets/images/home/products/costumes.jpeg';
-import paletosImage from '../assets/images/home/products/paletos.png';
+import paletosImage from '../assets/images/home/products/paletos.jpg';
 import ternosImage from '../assets/images/home/products/ternos.jpeg';
 
 export interface BlogCover {
@@ -21,7 +21,7 @@ const covers: Record<string, BlogCover> = {
 	},
 	'costume-vs-paleto-qual-escolher': {
 		src: paletosImage,
-		alt: 'Paletó azul texturizado com camisa branca, ajuste do botão na cintura',
+		alt: 'Homem de paletó azul-marinho sob medida, camisa clara e gravata, apoiado em mesa',
 	},
 	'quanto-custa-terno-sob-medida-sao-paulo': {
 		src: costumesImage,
