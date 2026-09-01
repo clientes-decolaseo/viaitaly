@@ -1,6 +1,6 @@
 ---
 title: "Quanto Custa um Terno Sob Medida em São Paulo?"
-description: "Fatores que definem o preço de um terno sob medida em São Paulo: tecido, técnica de confecção e nível de acabamento à mão. Guia para quem vai investir."
+description: "Como o preço de um terno sob medida em São Paulo é formado: tecido, técnica e acabamento. Sem faixas genéricas — o valor sai da avaliação do seu projeto."
 h1: "Quanto Custa um Terno Sob Medida em São Paulo"
 pubDate: 2026-08-26
 updatedDate: 2026-09-01
@@ -10,9 +10,9 @@ priority: "alta"
 draft: false
 ---
 
-> Este artigo trata de fatores que influenciam o preço de um terno sob medida. Valores específicos de mercado citados aqui estão marcados como **[CONFIRMAR]** e devem ser validados antes da publicação — preços variam por sazonalidade e fornecedor de tecido.
+Quem busca quanto custa um terno sob medida em São Paulo costuma esperar uma tabela. Este artigo explica **como o preço é formado** — não um número publicado. A Via Italy não divulga faixas fixas: cada peça bespoke tem escopo próprio, e o valor sai de uma avaliação do seu projeto.
 
-O preço de um terno sob medida não é um número fixo. Ele varia conforme três fatores principais: a técnica de confecção, o tecido escolhido e o nível de acabamento manual. Entender esses fatores ajuda a avaliar onde o investimento realmente importa.
+Três fatores pesam nessa formação: a técnica de confecção, o tecido escolhido e o nível de acabamento manual. Entender cada um ajuda a avaliar onde o investimento realmente importa.
 
 ## Técnica de Confecção
 
@@ -22,7 +22,7 @@ Como vimos no comparativo entre [bespoke, made-to-measure e prêt-à-porter](/bl
 
 O tecido costuma ser o fator de maior impacto no preço final. Tecidos de casas têxteis europeias — como as que a Via Italy importa diretamente (Loro Piana, Cerruti, Ermenegildo Zegna, Reda, Drago, Piacenza e Dormeuil) — têm custo superior a tecidos nacionais ou sintéticos, mas oferecem caimento, durabilidade e toque muito diferentes.
 
-Faixas de referência por categoria de tecido: **[CONFIRMAR — inserir faixas de mercado validadas antes de publicar]**.
+Por isso a Via Italy não publica faixas por categoria de tecido. Cada encomenda bespoke combina tecido, complexidade da construção e acabamento de um jeito único. Uma faixa genérica correria o risco de não refletir o projeto real do cliente.
 
 ## Nível de Acabamento à Mão
 
@@ -45,4 +45,6 @@ Um terno bespoke bem cuidado tem vida útil média de 15 anos. Esse horizonte re
 
 ## Fale Sobre o Seu Projeto
 
-Cada projeto bespoke tem um escopo diferente, por isso a Via Italy não trabalha com tabela fixa publicada. Agende um horário — no ateliê ou no endereço de sua escolha — para receber uma avaliação personalizada com base no tecido e no estilo desejado.
+Se você chegou até aqui procurando um número, o caminho honesto é outro: uma conversa sobre o tecido, o corte e a ocasião de uso. Aí sim dá para montar uma avaliação personalizada — sem uma faixa genérica que não representaria a sua peça.
+
+Agende um horário, no ateliê ou no endereço de sua escolha em São Paulo capital e Grande São Paulo, e [fale com a Via Italy](/ternos-sob-medida-sp/#cta-heading) para receber essa avaliação.
