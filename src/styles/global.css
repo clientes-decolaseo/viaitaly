@@ -10,8 +10,8 @@
 	--color-white: #FFFFFF;
 	--color-border-muted: #6D7785;
 
-	--font-display: "Cormorant", serif;
-	--font-body: "Lato", sans-serif;
+	--font-display: "Cormorant", "Cormorant Fallback", serif;
+	--font-body: "Lato", "Lato Fallback", sans-serif;
 	--font-accent: "Roboto", sans-serif;
 
 	--space-1: 0.25rem;
@@ -35,6 +35,40 @@
 	--color-border: var(--color-border-muted);
 	--color-whatsapp: var(--color-brand-green);
 	--color-whatsapp-dark: var(--color-accent-red-start);
+}
+
+/* Fallbacks métricos gerados com Fontaine (Georgia → Cormorant 700, Arial → Lato 400/700). */
+@font-face {
+	font-family: "Cormorant Fallback";
+	src: local("Georgia");
+	size-adjust: 89.2775%;
+	ascent-override: 103.4975%;
+	descent-override: 32.1469%;
+	line-gap-override: 0%;
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Lato Fallback";
+	src: local("Arial");
+	size-adjust: 97.6894%;
+	ascent-override: 101.0345%;
+	descent-override: 21.8038%;
+	line-gap-override: 0%;
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Lato Fallback";
+	src: local("Arial");
+	size-adjust: 99.9325%;
+	ascent-override: 98.7666%;
+	descent-override: 21.3144%;
+	line-gap-override: 0%;
+	font-weight: 700;
+	font-style: normal;
 }
 
 *,
