@@ -1,6 +1,6 @@
 ---
-title: "Costume ou Paletó: Qual Escolher para Cada Ocasião"
-description: "Diferenças entre costume completo e paletó avulso sob medida: quando usar cada um e como combinar peças de alfaiataria bespoke."
+title: "O Que é Paletó? Costume ou Paletó: Qual Escolher"
+description: "O que é um paletó e quando usar em vez do costume completo? Guia prático para escolher a peça certa em cada ocasião."
 h1: "Costume ou Paletó: Qual Escolher"
 pubDate: 2026-08-26
 updatedDate: 2026-08-26
@@ -12,15 +12,15 @@ draft: false
 
 Nem toda ocasião pede um costume completo. Entender a diferença entre costume e paletó avulso ajuda a investir no que realmente atende à sua necessidade — seja um evento formal ou o uso mais versátil no dia a dia.
 
+## O Que é um Paletó
+
+Paletó avulso é a peça superior, pensada para ser usada de forma independente — combinada com calças de tecidos e cores diferentes. Costuma ter um corte um pouco mais versátil, pensado para funcionar bem tanto em composições formais quanto mais casuais.
+
 ## O Que é um Costume
 
 Costume é o conjunto completo: paletó e calça confeccionados no mesmo tecido, desenhados para funcionar como uma peça única. É a opção clássica para ambientes corporativos formais, casamentos e eventos que pedem uniformidade visual.
 
 Como todo processo bespoke, um costume sob medida é construído a partir de um molde individual — veja o [passo a passo completo do processo](/blog/como-funciona-processo-bespoke/).
-
-## O Que é um Paletó Avulso
-
-Paletó avulso é a peça superior, pensada para ser usada de forma independente — combinada com calças de tecidos e cores diferentes. Costuma ter um corte um pouco mais versátil, pensado para funcionar bem tanto em composições formais quanto mais casuais.
 
 ## Quando Escolher o Costume Completo
 
