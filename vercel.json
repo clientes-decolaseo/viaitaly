@@ -1,3 +1,10 @@
 {
-  "trailingSlash": true
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/shop/", "destination": "/ternos-sob-medida-sp/", "statusCode": 301 },
+    { "source": "/su-misura/", "destination": "/ternos-sob-medida-sp/", "statusCode": 301 },
+    { "source": "/prazos-e-valores/", "destination": "/blog/quanto-custa-terno-sob-medida-sao-paulo/", "statusCode": 301 },
+    { "source": "/obrigado/", "destination": "/", "statusCode": 301 },
+    { "source": "/home/", "destination": "/", "statusCode": 301 }
+  ]
 }
