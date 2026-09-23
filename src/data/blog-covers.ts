@@ -17,7 +17,7 @@ const covers: Record<string, BlogCover> = {
 	},
 	'como-funciona-processo-bespoke': {
 		src: sobreFoto,
-		alt: 'Alfaiate da Sartoria Via Italy no ateliê',
+		alt: 'Sergio Saturnino, fundador da Sartoria Via Italy, de colete, paletó azul-marinho e gravata',
 	},
 	'costume-vs-paleto-qual-escolher': {
 		src: paletosImage,
