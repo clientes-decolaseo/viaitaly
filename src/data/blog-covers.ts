@@ -4,6 +4,7 @@ import sobreFoto from '../assets/images/home/sobre-foto.jpeg';
 import costumesImage from '../assets/images/home/products/costumes.jpeg';
 import paletosImage from '../assets/images/home/products/paletos.jpg';
 import ternosImage from '../assets/images/home/products/ternos.jpeg';
+import prazoFullCanvasImage from '../assets/images/blog/prazo-confeccao-full-canvas.jpg';
 
 export interface BlogCover {
 	src: ImageMetadata;
@@ -30,6 +31,10 @@ const covers: Record<string, BlogCover> = {
 	'tecidos-nobres-drago-zegna-loro-piana': {
 		src: tecidosNobres,
 		alt: 'Alfaiate apresentando tecidos nobres a um cliente no ateliê',
+	},
+	'prazo-confeccao-terno-full-canvas': {
+		src: prazoFullCanvasImage,
+		alt: 'Mãos de alfaiate costurando à mão um tecido marrom, com agulha e dedal',
 	},
 	'terno-sob-medida-para-casamento': {
 		src: ternosImage,
