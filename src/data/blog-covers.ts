@@ -34,7 +34,7 @@ const covers: Record<string, BlogCover> = {
 	},
 	'prazo-confeccao-terno-full-canvas': {
 		src: prazoFullCanvasImage,
-		alt: 'Mãos de alfaiate costurando à mão um tecido marrom, com agulha e dedal',
+		alt: 'Paletó azul-marinho com alinhavos em manequim no ateliê, ao lado de amostras de tecido, tesoura e fita métrica',
 	},
 	'terno-sob-medida-para-casamento': {
 		src: ternosImage,
