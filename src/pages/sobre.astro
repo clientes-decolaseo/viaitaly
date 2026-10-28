@@ -2,49 +2,74 @@
 import CTAWhatsapp from '../components/CTAWhatsapp.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const title = 'Sergio Saturnino — Fundador da Sartoria Via Italy | 27 Anos de Ofício';
+const title = 'Sobre a Sartoria Via Italy | Fundada por Francesco Saturnino';
 const description =
-	'Conheça Sergio Saturnino, fundador da Via Italy. 27 anos de alfaiataria bespoke full canvas, parcerias com Loro Piana, Zegna e Dormeuil.';
+	'A Sartoria Via Italy foi fundada em 2012 por Francesco Saturnino. Conheça o ateliê e o mestre alfaiate Sergio Saturnino, 27 anos de bespoke full canvas.';
 const canonical = '/sobre/';
 
 const schema = {
 	'@context': 'https://schema.org',
-	'@type': 'Person',
-	name: 'Sergio Saturnino',
-	jobTitle: 'Mestre Alfaiate e Fundador',
-	worksFor: {
-		'@type': 'LocalBusiness',
-		name: 'Sartoria Via Italy',
-		foundingDate: '2012',
-	},
-	description:
-		'Mestre alfaiate com 27 anos de experiência em confecção bespoke full canvas, fundador da Sartoria Via Italy em 2012.',
-	knowsAbout: ['Alfaiataria bespoke', 'Full canvas', 'Tecidos italianos', 'Terno sob medida'],
+	'@graph': [
+		{
+			'@type': 'LocalBusiness',
+			'@id': 'https://viaitaly.com.br/#negocio',
+			name: 'Sartoria Via Italy',
+			url: 'https://viaitaly.com.br/',
+			foundingDate: '2012',
+			founder: { '@id': 'https://viaitaly.com.br/sobre/#francesco-saturnino' },
+			employee: { '@id': 'https://viaitaly.com.br/sobre/#sergio-saturnino' },
+		},
+		{
+			'@type': 'Person',
+			'@id': 'https://viaitaly.com.br/sobre/#francesco-saturnino',
+			name: 'Francesco Saturnino',
+			jobTitle: 'Fundador',
+			worksFor: { '@id': 'https://viaitaly.com.br/#negocio' },
+		},
+		{
+			'@type': 'Person',
+			'@id': 'https://viaitaly.com.br/sobre/#sergio-saturnino',
+			name: 'Sergio Saturnino',
+			jobTitle: 'Mestre Alfaiate',
+			worksFor: { '@id': 'https://viaitaly.com.br/#negocio' },
+			description:
+				'Mestre alfaiate com 27 anos de experiência em confecção bespoke full canvas na Sartoria Via Italy.',
+			knowsAbout: ['Alfaiataria bespoke', 'Full canvas', 'Tecidos italianos', 'Terno sob medida'],
+		},
+	],
 };
 ---
 
 <BaseLayout {title} {description} {canonical} {schema}>
 	<article class="page">
-		<h1>Sergio Saturnino: 27 Anos Dedicados à Alfaiataria Bespoke</h1>
+		<h1>Sartoria Via Italy: Fundada por Francesco Saturnino em 2012</h1>
 
 		<p>
-			Sergio Saturnino é o fundador da Sartoria Via Italy e responde diretamente por cada peça
-			que sai do ateliê. Não há intermediários entre o cliente e o mestre alfaiate: cada terno
-			passa pelas mãos de quem fundou a casa.
+			A Sartoria Via Italy foi fundada em 2012 por Francesco Saturnino. Sergio Saturnino é o
+			mestre alfaiate da casa e responde diretamente por cada peça que sai do ateliê. Não há
+			intermediários entre o cliente e o mestre alfaiate.
 		</p>
 
-		<section aria-labelledby="trajetoria">
-			<h2 id="trajetoria">Uma Trajetória de 27 Anos no Ofício</h2>
+		<section aria-labelledby="fundador">
+			<h2 id="fundador">Francesco Saturnino, Fundador</h2>
+			<p>
+				Francesco Saturnino fundou a Sartoria Via Italy em 2012. Desde então, a casa mantém um
+				princípio simples: cada peça nasce do zero, construída sob as medidas exatas de quem vai
+				vesti-la. Não existem tamanhos padrão nem ajustes de última hora — existe uma peça
+				pensada para uma pessoa específica.
+			</p>
+		</section>
+
+		<section aria-labelledby="mestre-alfaiate">
+			<h2 id="mestre-alfaiate">Sergio Saturnino, Mestre Alfaiate</h2>
 			<p>
 				Sergio dedica 27 anos à alfaiataria bespoke full canvas — a técnica mais tradicional e
 				trabalhosa de confecção de ternos, na qual a entretela é costurada à mão e acompanha o
 				corpo do cliente com um caimento que nenhuma peça industrial reproduz.
 			</p>
 			<p>
-				Essa experiência resultou na fundação da Sartoria Via Italy, em 2012. Desde então, a
-				casa mantém um princípio simples: cada peça nasce do zero, construída sob as medidas
-				exatas de quem vai vesti-la. Não existem tamanhos padrão nem ajustes de última hora —
-				existe uma peça pensada para uma pessoa específica.
+				Cada terno passa pelas mãos do mestre alfaiate, do molde às provas e ao acabamento
+				final.
 			</p>
 		</section>
 
@@ -85,11 +110,11 @@ const schema = {
 			</p>
 		</section>
 
-		<section class="cta" aria-labelledby="fale-com-sergio">
-			<h2 id="fale-com-sergio">Fale com Sergio Saturnino</h2>
+		<section class="cta" aria-labelledby="fale-conosco">
+			<h2 id="fale-conosco">Fale com a Sartoria Via Italy</h2>
 			<p>
 				Se você busca um terno que não existe em nenhuma prateleira — porque foi feito
-				exclusivamente para você — agende um horário com Sergio Saturnino e conheça o processo
+				exclusivamente para você — agende um horário com a Sartoria Via Italy e conheça o processo
 				bespoke da Via Italy.
 			</p>
 			<CTAWhatsapp texto="Agendar Atendimento via WhatsApp" />
