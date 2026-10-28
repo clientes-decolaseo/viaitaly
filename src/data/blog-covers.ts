@@ -1,9 +1,9 @@
 import type { ImageMetadata } from 'astro';
 import tecidosNobres from '../assets/images/home/benefits/tecidos-nobres.webp';
-import sobreFoto from '../assets/images/home/sobre-foto.jpeg';
 import costumesImage from '../assets/images/home/products/costumes.jpeg';
 import paletosImage from '../assets/images/home/products/paletos.jpg';
 import ternosImage from '../assets/images/home/products/ternos.jpeg';
+import processoBespokeImage from '../assets/images/blog/como-funciona-processo-bespoke.jpg';
 import prazoFullCanvasImage from '../assets/images/blog/prazo-confeccao-full-canvas.jpg';
 
 export interface BlogCover {
@@ -17,8 +17,8 @@ const covers: Record<string, BlogCover> = {
 		alt: 'Terno sob medida em prova de alfaiataria, com alinhavos visíveis no paletó',
 	},
 	'como-funciona-processo-bespoke': {
-		src: sobreFoto,
-		alt: 'Sergio Saturnino, fundador da Sartoria Via Italy, de colete, paletó azul-marinho e gravata',
+		src: processoBespokeImage,
+		alt: 'Paletó azul-marinho com alinhavos em manequim no ateliê, ao lado de amostras de tecido, tesoura e fita métrica',
 	},
 	'costume-vs-paleto-qual-escolher': {
 		src: paletosImage,
@@ -34,7 +34,7 @@ const covers: Record<string, BlogCover> = {
 	},
 	'prazo-confeccao-terno-full-canvas': {
 		src: prazoFullCanvasImage,
-		alt: 'Paletó azul-marinho com alinhavos em manequim no ateliê, ao lado de amostras de tecido, tesoura e fita métrica',
+		alt: 'Mãos de alfaiate costurando à mão um tecido marrom, com agulha e dedal',
 	},
 	'terno-sob-medida-para-casamento': {
 		src: ternosImage,
